@@ -37,4 +37,5 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          bunx gh-pages -d dist -b gh-pages -m "deploy: ${GITHUB_SHA}"
+          bunx gh-pages -d dist -b gh-pages -m "deploy: ${GITHUB_SHA}" \
+            -r "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git"
