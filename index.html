@@ -121,12 +121,6 @@
         height: 50px;
       }
 
-      @media (prefers-reduced-motion: reduce) {
-        .wave,
-        .ripple {
-          transform: none !important;
-        }
-      }
 
       /* Loading */
       #loading-screen {
@@ -499,12 +493,6 @@
         if (revealed) return;
         revealed = true;
 
-        if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-          loader.style.display = "none";
-          page.style.opacity = "1";
-          page.style.transform = "translateY(0)";
-          return;
-        }
 
         if (window.anime) {
           anime({
