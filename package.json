@@ -1,0 +1,10 @@
+{
+  "name": "ayp-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Always Yesterday Party corporate static site",
+  "scripts": {
+    "build": "bun scripts/build.mjs",
+    "preview": "bun --hot scripts/serve.mjs"
+  }
+}
