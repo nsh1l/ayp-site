@@ -4,7 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Always Yesterday Party｜株式会社コーポレートサイト</title>
-    <meta name="description" content="Always Yesterday Party（AYP）公式コーポレートサイト。プロジェクト情報・理念・お問い合わせを掲載しています。" />
+    <meta
+      name="description"
+      content="Always Yesterday Party（AYP）公式コーポレートサイト。プロジェクト情報・理念・お問い合わせを掲載しています。"
+    />
 
     <!-- Tailwind (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -17,37 +20,126 @@
               navy: "#0B1F3A",
               orange: "#F97316",
               grayish: "#6B7280",
-              ink: "#0F172A"
+              ink: "#0F172A",
             },
             boxShadow: {
-              soft: "0 10px 30px rgba(2, 6, 23, 0.10)"
-            }
-          }
-        }
-      }
+              soft: "0 10px 30px rgba(2, 6, 23, 0.10)",
+            },
+          },
+        },
+      };
     </script>
 
     <style>
-      .glass { background: rgba(255,255,255,0.72); backdrop-filter: blur(10px); }
+      .glass {
+        background: rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(10px);
+      }
 
+      /* Background motion */
       #global-inner-sea {
         position: fixed;
         inset: 0;
         z-index: 0;
         pointer-events: none;
         overflow: hidden;
-        background: linear-gradient(180deg, #031224 0%, #0b1f3a 40%, #102f46 70%, #f8fafc 100%);
+        /* AYPの静かな“海”の雰囲気 */
+        background: linear-gradient(
+          180deg,
+          rgba(3, 18, 36, 0.96) 0%,
+          rgba(11, 31, 58, 0.90) 35%,
+          rgba(16, 47, 70, 0.78) 70%,
+          rgba(248, 250, 252, 0.96) 100%
+        );
       }
 
+      .inner-sea {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+      }
+
+      .sea-glow {
+        position: absolute;
+        left: 50%;
+        bottom: 14%;
+        width: min(70vw, 720px);
+        height: 220px;
+        transform: translateX(-50%);
+        background: radial-gradient(
+          ellipse at center,
+          rgba(125, 211, 252, 0.28) 0%,
+          rgba(56, 189, 248, 0.08) 48%,
+          rgba(14, 116, 144, 0) 74%
+        );
+        filter: blur(2px);
+      }
+
+      .wave {
+        position: absolute;
+        left: -10%;
+        width: 120%;
+        border-radius: 9999px;
+      }
+
+      .wave-1 {
+        bottom: 18%;
+        height: 44px;
+        background: rgba(186, 230, 253, 0.22);
+      }
+
+      .wave-2 {
+        bottom: 13%;
+        height: 58px;
+        background: rgba(125, 211, 252, 0.16);
+      }
+
+      .wave-3 {
+        bottom: 8%;
+        height: 74px;
+        background: rgba(56, 189, 248, 0.12);
+      }
+
+      .ripple {
+        position: absolute;
+        border: 1px solid rgba(186, 230, 253, 0.35);
+        border-radius: 9999px;
+        opacity: 0.6;
+      }
+
+      .ripple-1 {
+        left: 22%;
+        bottom: 16%;
+        width: 180px;
+        height: 42px;
+      }
+
+      .ripple-2 {
+        right: 20%;
+        bottom: 12%;
+        width: 220px;
+        height: 50px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .wave,
+        .ripple {
+          transform: none !important;
+        }
+      }
+
+      /* Loading */
       #loading-screen {
         position: fixed;
         inset: 0;
         z-index: 100;
         display: grid;
         place-items: center;
+        /* 背景透過 */
         background: transparent;
       }
-      #loading-screen video {
+
+      #loading-logo {
         width: min(66vw, 480px);
         border-radius: 16px;
         box-shadow: 0 16px 50px rgba(0, 0, 0, 0.28);
@@ -59,64 +151,9 @@
         opacity: 0;
         transform: translateY(8px);
       }
-
-      .inner-sea {
-        position: absolute;
-        inset: 0;
-        overflow: hidden;
-        pointer-events: none;
-      }
-      .sea-glow {
-        position: absolute;
-        left: 50%;
-        bottom: 14%;
-        width: min(70vw, 720px);
-        height: 220px;
-        transform: translateX(-50%);
-        background: radial-gradient(ellipse at center, rgba(125, 211, 252, 0.28) 0%, rgba(56, 189, 248, 0.08) 48%, rgba(14, 116, 144, 0) 74%);
-        filter: blur(2px);
-      }
-      .wave {
-        position: absolute;
-        left: -10%;
-        width: 120%;
-        border-radius: 9999px;
-      }
-      .wave-1 {
-        bottom: 18%;
-        height: 44px;
-        background: rgba(186, 230, 253, 0.22);
-      }
-      .wave-2 {
-        bottom: 13%;
-        height: 58px;
-        background: rgba(125, 211, 252, 0.16);
-      }
-      .wave-3 {
-        bottom: 8%;
-        height: 74px;
-        background: rgba(56, 189, 248, 0.12);
-      }
-      .ripple {
-        position: absolute;
-        border: 1px solid rgba(186, 230, 253, 0.35);
-        border-radius: 9999px;
-        opacity: 0.6;
-      }
-      .ripple-1 {
-        left: 22%;
-        bottom: 16%;
-        width: 180px;
-        height: 42px;
-      }
-      .ripple-2 {
-        right: 20%;
-        bottom: 12%;
-        width: 220px;
-        height: 50px;
-      }
     </style>
   </head>
+
   <body class="bg-transparent text-slate-900">
     <div id="global-inner-sea" aria-hidden="true">
       <div class="inner-sea">
@@ -136,259 +173,348 @@
     </div>
 
     <div id="page-content">
-    <!-- Top bar -->
-    <header class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/90 backdrop-blur">
-      <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
-        <a href="/" class="flex items-center gap-3" aria-label="AYP Home">
-          <img
-            src="/assets/ayp_logo_square_nuttsponchon-3.jpg"
-            alt="AYP ロゴ"
-            class="h-10 w-10 rounded-xl object-cover"
-            loading="eager"
-          />
-          <div>
-            <div class="text-sm font-semibold tracking-wide text-navy">Always Yesterday Party</div>
-            <div class="text-xs text-grayish">Corporate Site</div>
-          </div>
-        </a>
+      <!-- Top bar -->
+      <header class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/90 backdrop-blur">
+        <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
+          <a href="/" class="flex items-center gap-3" aria-label="AYP Home">
+            <img
+              src="/assets/ayp_logo_square_nuttsponchon-3.jpg"
+              alt="AYP ロゴ"
+              class="h-10 w-10 rounded-xl object-cover"
+              loading="eager"
+            />
+            <div>
+              <div class="text-sm font-semibold tracking-wide text-navy">Always Yesterday Party</div>
+              <div class="text-xs text-grayish">Corporate Site</div>
+            </div>
+          </a>
 
-        <nav class="hidden items-center gap-6 md:flex" aria-label="Primary">
-          <a class="text-sm font-medium text-slate-700 hover:text-navy" href="/about.html">理念</a>
-          <a class="text-sm font-medium text-slate-700 hover:text-navy" href="/projects.html">事業</a>
-          <a class="text-sm font-medium text-slate-700 hover:text-navy" href="/contact.html">お問い合わせ</a>
-        </nav>
+          <nav class="hidden items-center gap-6 md:flex" aria-label="Primary">
+            <a class="text-sm font-medium text-slate-700 hover:text-navy" href="/about.html">理念</a>
+            <a class="text-sm font-medium text-slate-700 hover:text-navy" href="/projects.html">事業</a>
+            <a class="text-sm font-medium text-slate-700 hover:text-navy" href="/contact.html">お問い合わせ</a>
+          </nav>
 
-        <a
-          href="/contact.html"
-          class="inline-flex items-center justify-center rounded-full bg-orange px-4 py-2 text-sm font-semibold text-white shadow-soft hover:opacity-95"
-        >
-          相談する
-        </a>
-      </div>
-
-      <div class="mx-auto max-w-6xl px-4 pb-3 md:hidden">
-        <nav class="flex flex-wrap gap-3" aria-label="Primary">
-          <a class="rounded-full border border-slate-200 px-4 py-2 text-sm" href="/about.html">理念</a>
-          <a class="rounded-full border border-slate-200 px-4 py-2 text-sm" href="/projects.html">事業</a>
-          <a class="rounded-full border border-slate-200 px-4 py-2 text-sm" href="/contact.html">お問い合わせ</a>
-        </nav>
-      </div>
-    </header>
-
-    <!-- Hero -->
-    <main>
-      <section class="relative overflow-hidden">
-        <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-navy to-white" />
-        <div aria-hidden="true" class="absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-orange/25 blur-3xl" />
-
-        <div class="inner-sea" aria-hidden="true">
-          <div class="sea-glow"></div>
-          <div class="wave wave-1"></div>
-          <div class="wave wave-2"></div>
-          <div class="wave wave-3"></div>
-          <div class="ripple ripple-1"></div>
-          <div class="ripple ripple-2"></div>
+          <a
+            href="/contact.html"
+            class="inline-flex items-center justify-center rounded-full bg-orange px-4 py-2 text-sm font-semibold text-white shadow-soft hover:opacity-95"
+          >
+            相談する
+          </a>
         </div>
 
-        <div class="relative mx-auto max-w-6xl px-4 pt-14 pb-10 sm:pt-20 sm:pb-14">
-          <div class="grid gap-10 lg:grid-cols-12 lg:items-center">
-            <div class="lg:col-span-7">
-              <div class="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-xs font-semibold text-navy shadow-soft">
-                <span class="inline-block h-2 w-2 rounded-full bg-orange" />
-                接続を、企業活動として。
-              </div>
-              <h1 class="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-                Always Yesterday Party（AYP）
-              </h1>
-              <p class="mt-4 text-base leading-relaxed text-white/90">
-                私たちは、過去の価値と未来の可能性をつなぎ、プロジェクト・コミュニティ・デジタル体験を
-                ひとつの“企業の仕組み”として届けます。
-              </p>
+        <div class="mx-auto max-w-6xl px-4 pb-3 md:hidden">
+          <nav class="flex flex-wrap gap-3" aria-label="Primary">
+            <a class="rounded-full border border-slate-200 px-4 py-2 text-sm" href="/about.html">理念</a>
+            <a class="rounded-full border border-slate-200 px-4 py-2 text-sm" href="/projects.html">事業</a>
+            <a class="rounded-full border border-slate-200 px-4 py-2 text-sm" href="/contact.html">お問い合わせ</a>
+          </nav>
+        </div>
+      </header>
 
-              <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+      <!-- Hero -->
+      <main>
+        <section class="relative overflow-hidden">
+          <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-navy via-navy/80 to-white" />
+          <div aria-hidden="true" class="absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-orange/25 blur-3xl" />
+
+          <div class="relative mx-auto max-w-6xl px-4 pt-14 pb-10 sm:pt-20 sm:pb-14">
+            <div class="grid gap-10 lg:grid-cols-12 lg:items-center">
+              <div class="lg:col-span-7">
+                <div class="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-xs font-semibold text-navy shadow-soft">
+                  <span class="inline-block h-2 w-2 rounded-full bg-orange" />
+                  接続を、企業活動として。
+                </div>
+
+                <h1 class="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+                  Always Yesterday Party（AYP）
+                </h1>
+
+                <p class="mt-4 max-w-xl text-base leading-relaxed text-white/90">
+                  過去の価値と未来の可能性をつなぎ、プロジェクト・コミュニティ・デジタル体験を
+                  ひとつの“企業の仕組み”として届けます。
+                </p>
+
+                <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+                  <a
+                    href="/projects.html"
+                    class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-navy shadow-soft hover:opacity-95"
+                  >
+                    事業を見る
+                  </a>
+                  <a
+                    href="/about.html"
+                    class="inline-flex items-center justify-center rounded-full border border-white/40 bg-white/10 px-6 py-3 text-sm font-semibold text-white hover:bg-white/15"
+                  >
+                    理念を読む
+                  </a>
+                </div>
+
+                <!-- Quick stats -->
+                <div class="mt-8 grid gap-3 sm:grid-cols-3">
+                  <div class="rounded-2xl bg-white/80 p-4 glass shadow-soft">
+                    <div class="text-xs font-semibold text-grayish">Focus</div>
+                    <div class="mt-1 text-sm font-bold text-navy">企画〜運用</div>
+                  </div>
+                  <div class="rounded-2xl bg-white/80 p-4 glass shadow-soft">
+                    <div class="text-xs font-semibold text-grayish">Mode</div>
+                    <div class="mt-1 text-sm font-bold text-navy">静的・速い体験</div>
+                  </div>
+                  <div class="rounded-2xl bg-white/80 p-4 glass shadow-soft">
+                    <div class="text-xs font-semibold text-grayish">Outcome</div>
+                    <div class="mt-1 text-sm font-bold text-navy">分かりやすい情報</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="lg:col-span-5">
+                <div class="rounded-3xl bg-white/80 p-5 glass shadow-soft">
+                  <div class="flex items-center justify-between">
+                    <div class="text-sm font-semibold text-navy">最新の更新</div>
+                    <div class="inline-flex items-center gap-2 text-xs font-semibold text-grayish">
+                      <span class="inline-block h-2 w-2 rounded-full bg-orange" />
+                      Live
+                    </div>
+                  </div>
+
+                  <div class="mt-4 space-y-3">
+                    <article class="rounded-2xl border border-slate-200 bg-white p-4">
+                      <div class="text-xs font-semibold text-grayish">2026-06</div>
+                      <h3 class="mt-1 text-sm font-bold text-navy">公開準備中</h3>
+                      <p class="mt-1 text-sm leading-relaxed text-slate-700">
+                        事業情報・導入の考え方・ブランドガイドを順次反映します。
+                      </p>
+                    </article>
+
+                    <article class="rounded-2xl border border-slate-200 bg-white p-4">
+                      <div class="text-xs font-semibold text-grayish">About</div>
+                      <h3 class="mt-1 text-sm font-bold text-navy">AYPの“接続”を言語化</h3>
+                      <p class="mt-1 text-sm leading-relaxed text-slate-700">
+                        人・モノ・情報をつなげる設計思想を、ページに落とし込みます。
+                      </p>
+                    </article>
+                  </div>
+
+                  <div class="mt-5 rounded-2xl bg-slate-50 p-4">
+                    <div class="text-xs font-semibold text-grayish">お問い合わせ</div>
+                    <p class="mt-1 text-sm font-medium text-slate-800">プロジェクト相談はフォームから。</p>
+                    <a
+                      href="/contact.html"
+                      class="mt-3 inline-flex w-full items-center justify-center rounded-full bg-orange px-4 py-2 text-sm font-semibold text-white hover:opacity-95"
+                    >
+                      フォームへ
+                    </a>
+                  </div>
+                </div>
+
+                <div class="mt-4 text-center text-xs text-white/70">
+                  <span class="inline-block rounded-full bg-black/10 px-3 py-1">Static HTML • Fast</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Services / value -->
+        <section class="mx-auto max-w-6xl px-4 py-12">
+          <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <div>
+              <h2 class="text-2xl font-bold text-navy">AYPが提供する価値</h2>
+              <p class="mt-2 text-slate-700">企業向けの情報発信・企画・運用を、最短で形にします。</p>
+            </div>
+            <a href="/projects.html" class="text-sm font-semibold text-orange hover:opacity-90">
+              詳しく見る →
+            </a>
+          </div>
+
+          <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
+              <div class="inline-flex items-center justify-center rounded-2xl bg-navy/5 p-3">
+                <div class="h-6 w-6 rounded-full bg-orange" aria-hidden="true"></div>
+              </div>
+              <h3 class="mt-4 text-lg font-bold text-navy">コーポレート設計</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-700">
+                目的・対象・情報設計から導線まで。静的でも伝わる構造にします。
+              </p>
+            </div>
+
+            <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
+              <div class="inline-flex items-center justify-center rounded-2xl bg-navy/5 p-3">
+                <div class="h-6 w-6 rounded-full bg-orange" aria-hidden="true"></div>
+              </div>
+              <h3 class="mt-4 text-lg font-bold text-navy">ブランド運用</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-700">
+                ロゴ・トーン・文章の統一。更新しやすいテンプレ構成で整えます。
+              </p>
+            </div>
+
+            <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
+              <div class="inline-flex items-center justify-center rounded-2xl bg-navy/5 p-3">
+                <div class="h-6 w-6 rounded-full bg-orange" aria-hidden="true"></div>
+              </div>
+              <h3 class="mt-4 text-lg font-bold text-navy">高速な公開</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-700">
+                静的サイトなので軽量・高速。GitHub Pages などにそのまま載せられます。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Process -->
+        <section class="mx-auto max-w-6xl px-4 pb-4 pt-2">
+          <div class="flex items-end justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-navy">導入のプロセス</h2>
+              <p class="mt-2 text-slate-700">“考え”を、“見える体験”に変えるための流れです。</p>
+            </div>
+          </div>
+
+          <div class="mt-8 grid gap-4 md:grid-cols-4">
+            <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-soft">
+              <div class="text-sm font-semibold text-orange">Step 01</div>
+              <h3 class="mt-2 text-lg font-bold text-navy">ヒアリング</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-700">現状・課題・伝えたいことを整理します。</p>
+            </div>
+
+            <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-soft">
+              <div class="text-sm font-semibold text-orange">Step 02</div>
+              <h3 class="mt-2 text-lg font-bold text-navy">設計</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-700">情報設計と導線、必要なページ構成を決めます。</p>
+            </div>
+
+            <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-soft">
+              <div class="text-sm font-semibold text-orange">Step 03</div>
+              <h3 class="mt-2 text-lg font-bold text-navy">実装</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-700">静的で速い体験を、実際の画面として作ります。</p>
+            </div>
+
+            <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-soft">
+              <div class="text-sm font-semibold text-orange">Step 04</div>
+              <h3 class="mt-2 text-lg font-bold text-navy">運用・改善</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-700">文章・更新導線を整え、継続しやすくします。</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Quick links -->
+        <section class="mx-auto max-w-6xl px-4 py-10">
+          <div class="rounded-3xl bg-slate-50 p-7">
+            <div class="grid gap-6 lg:grid-cols-12 lg:items-center">
+              <div class="lg:col-span-8">
+                <h2 class="text-2xl font-bold text-navy">事業領域（現在の準備状況）</h2>
+                <p class="mt-2 text-slate-700">
+                  詳細はページに分けて順次公開します。まずは全体像をご覧ください。
+                </p>
+              </div>
+              <div class="lg:col-span-4 flex flex-col sm:flex-row gap-3">
                 <a
                   href="/projects.html"
-                  class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-navy shadow-soft hover:opacity-95"
+                  class="inline-flex items-center justify-center rounded-full bg-orange px-6 py-3 text-sm font-semibold text-white hover:opacity-95"
                 >
                   事業を見る
                 </a>
                 <a
                   href="/about.html"
-                  class="inline-flex items-center justify-center rounded-full border border-white/40 bg-white/10 px-6 py-3 text-sm font-semibold text-white hover:bg-white/15"
+                  class="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-navy hover:bg-slate-50"
                 >
-                  理念を読む
+                  理念へ
                 </a>
               </div>
-
-              <div class="mt-8 grid gap-3 sm:grid-cols-3">
-                <div class="rounded-2xl bg-white/80 p-4 glass shadow-soft">
-                  <div class="text-xs font-semibold text-grayish">Focus</div>
-                  <div class="mt-1 text-sm font-bold text-navy">企画〜運用</div>
-                </div>
-                <div class="rounded-2xl bg-white/80 p-4 glass shadow-soft">
-                  <div class="text-xs font-semibold text-grayish">Mode</div>
-                  <div class="mt-1 text-sm font-bold text-navy">静的・速い体験</div>
-                </div>
-                <div class="rounded-2xl bg-white/80 p-4 glass shadow-soft">
-                  <div class="text-xs font-semibold text-grayish">Outcome</div>
-                  <div class="mt-1 text-sm font-bold text-navy">分かりやすい情報</div>
-                </div>
-              </div>
             </div>
 
-            <div class="lg:col-span-5">
-              <div class="rounded-3xl bg-white/80 p-5 glass shadow-soft">
-                <div class="flex items-center justify-between">
-                  <div class="text-sm font-semibold text-navy">最新の更新</div>
-                  <div class="inline-flex items-center gap-2 text-xs font-semibold text-grayish">
-                    <span class="inline-block h-2 w-2 rounded-full bg-orange" />
-                    Live
-                  </div>
-                </div>
-
-                <div class="mt-4 space-y-3">
-                  <article class="rounded-2xl border border-slate-200 bg-white p-4">
-                    <div class="text-xs font-semibold text-grayish">2026-06</div>
-                    <h3 class="mt-1 text-sm font-bold text-navy">コーポレートサイト公開準備中</h3>
-                    <p class="mt-1 text-sm leading-relaxed text-slate-700">
-                      事業情報・導入事例・ブランドガイドを順次反映します。
-                    </p>
-                  </article>
-
-                  <article class="rounded-2xl border border-slate-200 bg-white p-4">
-                    <div class="text-xs font-semibold text-grayish">About</div>
-                    <h3 class="mt-1 text-sm font-bold text-navy">AYPの“接続”を言語化</h3>
-                    <p class="mt-1 text-sm leading-relaxed text-slate-700">
-                      人・モノ・情報をつなげる設計思想を、ページに落とし込みます。
-                    </p>
-                  </article>
-                </div>
-
-                <div class="mt-5 rounded-2xl bg-slate-50 p-4">
-                  <div class="text-xs font-semibold text-grayish">お問い合わせ</div>
-                  <p class="mt-1 text-sm font-medium text-slate-800">プロジェクト相談はフォームから。</p>
-                  <a href="/contact.html" class="mt-3 inline-flex w-full items-center justify-center rounded-full bg-orange px-4 py-2 text-sm font-semibold text-white hover:opacity-95">
-                    フォームへ
-                  </a>
-                </div>
+            <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div class="rounded-2xl bg-white p-5 shadow-soft">
+                <div class="text-xs font-semibold text-grayish">Content</div>
+                <div class="mt-2 text-sm font-bold text-navy">情報発信設計</div>
               </div>
-
-              <div class="mt-4 text-center text-xs text-white/70">
-                <!-- Decorative -->
-                <span class="inline-block rounded-full bg-black/10 px-3 py-1">Static HTML • Fast</span>
+              <div class="rounded-2xl bg-white p-5 shadow-soft">
+                <div class="text-xs font-semibold text-grayish">Digital</div>
+                <div class="mt-2 text-sm font-bold text-navy">Web体験の最適化</div>
+              </div>
+              <div class="rounded-2xl bg-white p-5 shadow-soft">
+                <div class="text-xs font-semibold text-grayish">Brand</div>
+                <div class="mt-2 text-sm font-bold text-navy">ブランド運用の設計</div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- Logos / quick info -->
-      <section class="mx-auto max-w-6xl px-4 py-12">
-        <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-          <div>
-            <h2 class="text-2xl font-bold text-navy">AYPが提供する価値</h2>
-            <p class="mt-2 text-slate-700">企業向けの情報発信・企画・運用を、最短で形にします。</p>
-          </div>
-          <a href="/projects.html" class="text-sm font-semibold text-orange hover:opacity-90">詳しく見る →</a>
-        </div>
-
-        <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
-            <div class="inline-flex items-center justify-center rounded-2xl bg-navy/5 p-3">
-              <div class="h-6 w-6 rounded-full bg-orange" aria-hidden="true" />
-            </div>
-            <h3 class="mt-4 text-lg font-bold text-navy">コーポレート設計</h3>
-            <p class="mt-2 text-sm leading-relaxed text-slate-700">
-              目的・対象・情報設計から導線まで。静的でも伝わる構造にします。
-            </p>
-          </div>
-
-          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
-            <div class="inline-flex items-center justify-center rounded-2xl bg-navy/5 p-3">
-              <div class="h-6 w-6 rounded-full bg-orange" aria-hidden="true" />
-            </div>
-            <h3 class="mt-4 text-lg font-bold text-navy">ブランド運用</h3>
-            <p class="mt-2 text-sm leading-relaxed text-slate-700">
-              ロゴ・トーン・文章の統一。更新しやすいテンプレ構成で整えます。
-            </p>
-          </div>
-
-          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
-            <div class="inline-flex items-center justify-center rounded-2xl bg-navy/5 p-3">
-              <div class="h-6 w-6 rounded-full bg-orange" aria-hidden="true" />
-            </div>
-            <h3 class="mt-4 text-lg font-bold text-navy">高速な公開</h3>
-            <p class="mt-2 text-sm leading-relaxed text-slate-700">
-              静的サイトなので軽量・高速。GitHub Pages などにそのまま載せられます。
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Footer CTA -->
-      <section class="mx-auto max-w-6xl px-4 pb-16">
-        <div class="rounded-3xl bg-navy p-8 text-white shadow-soft">
-          <div class="grid gap-6 md:grid-cols-12 md:items-center">
-            <div class="md:col-span-8">
-              <h2 class="text-2xl font-bold">まずは一度、相談してみませんか？</h2>
-              <p class="mt-2 text-white/85">要件が固まっていなくてもOK。現状を聞かせてください。</p>
-            </div>
-            <div class="md:col-span-4">
-              <a href="/contact.html" class="inline-flex w-full items-center justify-center rounded-full bg-orange px-6 py-3 text-sm font-semibold text-white hover:opacity-95">
-                お問い合わせ
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="border-t border-slate-200 bg-white">
-      <div class="mx-auto max-w-6xl px-4 py-10">
-        <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <div>
-            <div class="flex items-center gap-3">
-              <img src="/assets/ayp_logo_square_nuttsponchon-3.jpg" alt="AYP" class="h-9 w-9 rounded-xl object-cover" />
-              <div>
-                <div class="text-sm font-semibold text-navy">Always Yesterday Party</div>
-                <div class="text-xs text-grayish">Static HTML Corporate Site</div>
+        <!-- Footer CTA -->
+        <section class="mx-auto max-w-6xl px-4 pb-16">
+          <div class="rounded-3xl bg-navy p-8 text-white shadow-soft">
+            <div class="grid gap-6 md:grid-cols-12 md:items-center">
+              <div class="md:col-span-8">
+                <h2 class="text-2xl font-bold">まずは一度、相談してみませんか？</h2>
+                <p class="mt-2 text-white/85">要件が固まっていなくてもOK。現状を聞かせてください。</p>
+              </div>
+              <div class="md:col-span-4">
+                <a
+                  href="/contact.html"
+                  class="inline-flex w-full items-center justify-center rounded-full bg-orange px-6 py-3 text-sm font-semibold text-white hover:opacity-95"
+                >
+                  お問い合わせ
+                </a>
               </div>
             </div>
-            <p class="mt-3 text-xs text-slate-600">© <span id="year"></span> AYP. All rights reserved.</p>
           </div>
+        </section>
+      </main>
 
-          <div class="flex gap-4">
-            <a class="text-sm font-semibold text-slate-700 hover:text-navy" href="/about.html">理念</a>
-            <a class="text-sm font-semibold text-slate-700 hover:text-navy" href="/projects.html">事業</a>
-            <a class="text-sm font-semibold text-slate-700 hover:text-navy" href="/privacy.html">プライバシー</a>
-            <a class="text-sm font-semibold text-slate-700 hover:text-navy" href="/contact.html">お問い合わせ</a>
+      <footer class="border-t border-slate-200 bg-white">
+        <div class="mx-auto max-w-6xl px-4 py-10">
+          <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div>
+              <div class="flex items-center gap-3">
+                <img src="/assets/ayp_logo_square_nuttsponchon-3.jpg" alt="AYP" class="h-9 w-9 rounded-xl object-cover" />
+                <div>
+                  <div class="text-sm font-semibold text-navy">Always Yesterday Party</div>
+                  <div class="text-xs text-grayish">Static HTML Corporate Site</div>
+                </div>
+              </div>
+              <p class="mt-3 text-xs text-slate-600">
+                © <span id="year"></span> AYP. All rights reserved.
+              </p>
+            </div>
+
+            <div class="flex gap-4">
+              <a class="text-sm font-semibold text-slate-700 hover:text-navy" href="/about.html">理念</a>
+              <a class="text-sm font-semibold text-slate-700 hover:text-navy" href="/projects.html">事業</a>
+              <a class="text-sm font-semibold text-slate-700 hover:text-navy" href="/privacy.html">プライバシー</a>
+              <a class="text-sm font-semibold text-slate-700 hover:text-navy" href="/contact.html">お問い合わせ</a>
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
     </div>
 
     <script>
-      document.getElementById('year').textContent = new Date().getFullYear();
+      document.getElementById("year").textContent = new Date().getFullYear();
 
-      const loader = document.getElementById('loading-screen');
-      const logoVideo = document.getElementById('loading-logo');
-      const page = document.getElementById('page-content');
+      const loader = document.getElementById("loading-screen");
+      const logoVideo = document.getElementById("loading-logo");
+      const page = document.getElementById("page-content");
+
       let revealed = false;
-
       function revealPage() {
         if (revealed) return;
         revealed = true;
+
+        if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          loader.style.display = "none";
+          page.style.opacity = "1";
+          page.style.transform = "translateY(0)";
+          return;
+        }
 
         if (window.anime) {
           anime({
             targets: loader,
             opacity: [1, 0],
             duration: 700,
-            easing: 'easeOutQuad',
+            easing: "easeOutQuad",
             complete: () => {
-              loader.style.display = 'none';
-            }
+              loader.style.display = "none";
+            },
           });
 
           anime({
@@ -396,12 +522,12 @@
             opacity: [0, 1],
             translateY: [8, 0],
             duration: 900,
-            easing: 'easeOutCubic'
+            easing: "easeOutCubic",
           });
         } else {
-          loader.style.display = 'none';
-          page.style.opacity = '1';
-          page.style.transform = 'translateY(0)';
+          loader.style.display = "none";
+          page.style.opacity = "1";
+          page.style.transform = "translateY(0)";
         }
       }
 
@@ -409,53 +535,57 @@
         if (!window.anime) return;
 
         anime({
-          targets: '.wave-1',
-          translateX: [-18, 18],
+          targets: ".wave-1",
+          translateX: [-16, 16],
           duration: 5200,
-          easing: 'easeInOutSine',
-          direction: 'alternate',
-          loop: true
+          easing: "easeInOutSine",
+          direction: "alternate",
+          loop: true,
         });
+
         anime({
-          targets: '.wave-2',
+          targets: ".wave-2",
           translateX: [20, -20],
           duration: 6400,
-          easing: 'easeInOutSine',
-          direction: 'alternate',
-          loop: true
+          easing: "easeInOutSine",
+          direction: "alternate",
+          loop: true,
         });
+
         anime({
-          targets: '.wave-3',
-          translateX: [-14, 14],
+          targets: ".wave-3",
+          translateX: [-12, 12],
           duration: 7600,
-          easing: 'easeInOutSine',
-          direction: 'alternate',
-          loop: true
+          easing: "easeInOutSine",
+          direction: "alternate",
+          loop: true,
         });
+
         anime({
-          targets: '.ripple-1, .ripple-2',
-          scaleX: [1, 1.08],
+          targets: ".ripple-1, .ripple-2",
+          scaleX: [1, 1.07],
           scaleY: [1, 1.2],
-          opacity: [0.5, 0.2],
+          opacity: [0.55, 0.18],
           duration: 2800,
-          delay: anime.stagger(300),
-          easing: 'easeInOutSine',
-          direction: 'alternate',
-          loop: true
+          delay: anime.stagger(260),
+          easing: "easeInOutSine",
+          direction: "alternate",
+          loop: true,
         });
       }
 
       animateInnerSea();
 
       const safetyTimeout = setTimeout(revealPage, 5000);
-      logoVideo.addEventListener('ended', () => {
+      logoVideo.addEventListener("ended", () => {
         clearTimeout(safetyTimeout);
         revealPage();
       });
-      logoVideo.addEventListener('error', () => {
+      logoVideo.addEventListener("error", () => {
         clearTimeout(safetyTimeout);
         revealPage();
       });
+
       logoVideo.play().catch(() => {
         setTimeout(() => {
           clearTimeout(safetyTimeout);
