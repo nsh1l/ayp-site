@@ -8,6 +8,7 @@
 
     <!-- Tailwind (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
     <script>
       tailwind.config = {
         theme: {
@@ -28,9 +29,91 @@
 
     <style>
       .glass { background: rgba(255,255,255,0.72); backdrop-filter: blur(10px); }
+
+      #loading-screen {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: grid;
+        place-items: center;
+        background: radial-gradient(circle at 50% 30%, #112a4d 0%, #081425 55%, #050b14 100%);
+      }
+      #loading-screen video {
+        width: min(66vw, 480px);
+        border-radius: 16px;
+        box-shadow: 0 16px 50px rgba(0, 0, 0, 0.35);
+      }
+
+      #page-content {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      .inner-sea {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+      }
+      .sea-glow {
+        position: absolute;
+        left: 50%;
+        bottom: 14%;
+        width: min(70vw, 720px);
+        height: 220px;
+        transform: translateX(-50%);
+        background: radial-gradient(ellipse at center, rgba(125, 211, 252, 0.28) 0%, rgba(56, 189, 248, 0.08) 48%, rgba(14, 116, 144, 0) 74%);
+        filter: blur(2px);
+      }
+      .wave {
+        position: absolute;
+        left: -10%;
+        width: 120%;
+        border-radius: 9999px;
+      }
+      .wave-1 {
+        bottom: 18%;
+        height: 44px;
+        background: rgba(186, 230, 253, 0.22);
+      }
+      .wave-2 {
+        bottom: 13%;
+        height: 58px;
+        background: rgba(125, 211, 252, 0.16);
+      }
+      .wave-3 {
+        bottom: 8%;
+        height: 74px;
+        background: rgba(56, 189, 248, 0.12);
+      }
+      .ripple {
+        position: absolute;
+        border: 1px solid rgba(186, 230, 253, 0.35);
+        border-radius: 9999px;
+        opacity: 0.6;
+      }
+      .ripple-1 {
+        left: 22%;
+        bottom: 16%;
+        width: 180px;
+        height: 42px;
+      }
+      .ripple-2 {
+        right: 20%;
+        bottom: 12%;
+        width: 220px;
+        height: 50px;
+      }
     </style>
   </head>
   <body class="bg-white text-slate-900">
+    <div id="loading-screen" aria-label="Loading animation">
+      <video id="loading-logo" autoplay muted playsinline preload="auto">
+        <source src="/assets/fix_aypモーションロゴ.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <div id="page-content">
     <!-- Top bar -->
     <header class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/90 backdrop-blur">
       <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
@@ -75,6 +158,15 @@
       <section class="relative overflow-hidden">
         <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-navy to-white" />
         <div aria-hidden="true" class="absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-orange/25 blur-3xl" />
+
+        <div class="inner-sea" aria-hidden="true">
+          <div class="sea-glow"></div>
+          <div class="wave wave-1"></div>
+          <div class="wave wave-2"></div>
+          <div class="wave wave-3"></div>
+          <div class="ripple ripple-1"></div>
+          <div class="ripple ripple-2"></div>
+        </div>
 
         <div class="relative mx-auto max-w-6xl px-4 pt-14 pb-10 sm:pt-20 sm:pb-14">
           <div class="grid gap-10 lg:grid-cols-12 lg:items-center">
@@ -252,9 +344,102 @@
         </div>
       </div>
     </footer>
+    </div>
 
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
+
+      const loader = document.getElementById('loading-screen');
+      const logoVideo = document.getElementById('loading-logo');
+      const page = document.getElementById('page-content');
+      let revealed = false;
+
+      function revealPage() {
+        if (revealed) return;
+        revealed = true;
+
+        if (window.anime) {
+          anime({
+            targets: loader,
+            opacity: [1, 0],
+            duration: 700,
+            easing: 'easeOutQuad',
+            complete: () => {
+              loader.style.display = 'none';
+            }
+          });
+
+          anime({
+            targets: page,
+            opacity: [0, 1],
+            translateY: [8, 0],
+            duration: 900,
+            easing: 'easeOutCubic'
+          });
+        } else {
+          loader.style.display = 'none';
+          page.style.opacity = '1';
+          page.style.transform = 'translateY(0)';
+        }
+      }
+
+      function animateInnerSea() {
+        if (!window.anime) return;
+
+        anime({
+          targets: '.wave-1',
+          translateX: [-18, 18],
+          duration: 5200,
+          easing: 'easeInOutSine',
+          direction: 'alternate',
+          loop: true
+        });
+        anime({
+          targets: '.wave-2',
+          translateX: [20, -20],
+          duration: 6400,
+          easing: 'easeInOutSine',
+          direction: 'alternate',
+          loop: true
+        });
+        anime({
+          targets: '.wave-3',
+          translateX: [-14, 14],
+          duration: 7600,
+          easing: 'easeInOutSine',
+          direction: 'alternate',
+          loop: true
+        });
+        anime({
+          targets: '.ripple-1, .ripple-2',
+          scaleX: [1, 1.08],
+          scaleY: [1, 1.2],
+          opacity: [0.5, 0.2],
+          duration: 2800,
+          delay: anime.stagger(300),
+          easing: 'easeInOutSine',
+          direction: 'alternate',
+          loop: true
+        });
+      }
+
+      animateInnerSea();
+
+      const safetyTimeout = setTimeout(revealPage, 5000);
+      logoVideo.addEventListener('ended', () => {
+        clearTimeout(safetyTimeout);
+        revealPage();
+      });
+      logoVideo.addEventListener('error', () => {
+        clearTimeout(safetyTimeout);
+        revealPage();
+      });
+      logoVideo.play().catch(() => {
+        setTimeout(() => {
+          clearTimeout(safetyTimeout);
+          revealPage();
+        }, 1800);
+      });
     </script>
   </body>
 </html>
