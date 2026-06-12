@@ -43,13 +43,13 @@
         z-index: 0;
         pointer-events: none;
         overflow: hidden;
-        /* AYPの静かな“海”の雰囲気 */
+        /* 画像の「空→光の反射→深い海」寄せ（ティール＆シアン） */
         background: linear-gradient(
           180deg,
-          rgba(3, 18, 36, 0.96) 0%,
-          rgba(11, 31, 58, 0.90) 35%,
-          rgba(16, 47, 70, 0.78) 70%,
-          rgba(248, 250, 252, 0.96) 100%
+          rgba(93, 173, 226, 0.95) 0%,
+          rgba(46, 134, 193, 0.88) 35%,
+          rgba(27, 79, 114, 0.78) 70%,
+          rgba(248, 250, 252, 0.93) 100%
         );
       }
 
@@ -68,9 +68,9 @@
         transform: translateX(-50%);
         background: radial-gradient(
           ellipse at center,
-          rgba(125, 211, 252, 0.28) 0%,
-          rgba(56, 189, 248, 0.08) 48%,
-          rgba(14, 116, 144, 0) 74%
+          rgba(129, 212, 250, 0.34) 0%,
+          rgba(46, 134, 193, 0.14) 48%,
+          rgba(27, 79, 114, 0) 74%
         );
         filter: blur(2px);
       }
@@ -85,26 +85,26 @@
       .wave-1 {
         bottom: 18%;
         height: 44px;
-        background: rgba(186, 230, 253, 0.22);
+        background: rgba(129, 212, 250, 0.22);
       }
 
       .wave-2 {
         bottom: 13%;
         height: 58px;
-        background: rgba(125, 211, 252, 0.16);
+        background: rgba(46, 134, 193, 0.16);
       }
 
       .wave-3 {
         bottom: 8%;
         height: 74px;
-        background: rgba(56, 189, 248, 0.12);
+        background: rgba(13, 59, 102, 0.14);
       }
 
       .ripple {
         position: absolute;
-        border: 1px solid rgba(186, 230, 253, 0.35);
+        border: 1px solid rgba(129, 212, 250, 0.45);
         border-radius: 9999px;
-        opacity: 0.6;
+        opacity: 0.68;
       }
 
       .ripple-1 {
