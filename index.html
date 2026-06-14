@@ -13,6 +13,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
     <script>
+      window.AYP = window.AYP || {};
+      const aypShouldShowLoader = !localStorage.getItem("aypLoadingShown");
+      window.AYP.shouldShowLoader = aypShouldShowLoader;
+      document.documentElement.dataset.aypShowLoader = aypShouldShowLoader ? "1" : "0";
+
       tailwind.config = {
         theme: {
           extend: {
@@ -129,8 +134,11 @@
         z-index: 100;
         display: grid;
         place-items: center;
-        /* 背景透過 */
         background: transparent;
+      }
+
+      :root[data-ayp-show-loader="0"] #loading-screen {
+        display: none !important;
       }
 
       #loading-logo {
@@ -491,7 +499,7 @@
       const logoVideo = document.getElementById("loading-logo");
       const page = document.getElementById("page-content");
       const LOADING_KEY = "aypLoadingShown";
-      const shouldShowLoader = !localStorage.getItem(LOADING_KEY);
+      const shouldShowLoader = window.AYP?.shouldShowLoader ?? !localStorage.getItem(LOADING_KEY);
 
       let revealed = false;
       function revealPage() {
@@ -567,6 +575,25 @@
       }
 
       animateInnerSea();
+
+      function initTracklistToggles() {
+        document.querySelectorAll(".tracklist-toggle").forEach((toggle) => {
+          const card = toggle.closest(".release-card");
+          const body = card?.querySelector(".tracklist-body") ?? toggle.nextElementSibling;
+          if (!body) return;
+
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.addEventListener("click", () => {
+            const nextState = !toggle.classList.contains("open");
+            toggle.classList.toggle("open", nextState);
+            body.classList.toggle("open", nextState);
+            toggle.setAttribute("aria-expanded", nextState ? "true" : "false");
+            body.style.maxHeight = nextState ? `${body.scrollHeight}px` : "";
+          });
+        });
+      }
+
+      initTracklistToggles();
 
       if (shouldShowLoader) {
         localStorage.setItem(LOADING_KEY, "1");
