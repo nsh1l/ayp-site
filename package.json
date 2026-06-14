@@ -4,13 +4,14 @@
   "version": "1.0.0",
   "description": "Always Yesterday Party corporate static site",
   "scripts": {
-    "build": "bun scripts/build.mjs",
-    "preview": "bun --hot scripts/serve.mjs"
+    "build": "eleventy --config .eleventy.cjs",
+    "serve": "eleventy --serve --config .eleventy.cjs"
   },
   "module": "index.ts",
   "type": "module",
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@11ty/eleventy": "^2.0.0"
   },
   "peerDependencies": {
     "typescript": "^5.9.3"

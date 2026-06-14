@@ -1,0 +1,127 @@
+---
+layout: base.njk
+title: "Discography"
+description: "So1loh / AYP discography and tracklist catalog."
+permalink: /discography/
+---
+{% macro platformLink(platform) %}
+  <a
+    href="{{ platform.url }}"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium {{ platform.color }} hover:opacity-90"
+  >
+    {% if platform.icon == "spotify" %}
+      <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.52 17.34c-.24.36-.72.48-1.08.24-2.88-1.68-6.48-2.16-10.8-1.2-.42.12-.84-.12-.96-.54-.12-.42.12-.84.54-.96 4.68-1.08 8.64-.48 11.88 1.44.36.24.48.72.24 1.08zm1.44-3.24c-.3.42-.84.6-1.26.3-3.24-1.92-8.16-2.52-12-1.44-.48.12-1.02-.18-1.14-.66-.12-.48.18-1.02.66-1.14 4.44-1.2 9.72-.48 13.44 1.68.42.24.6.84.3 1.26zm.12-3.42c-3.84-2.28-10.2-2.52-13.8-1.38-.54.18-1.14-.12-1.32-.66-.18-.54.12-1.14.66-1.32 4.2-1.32 11.16-1.08 15.48 1.5.48.3.66.96.36 1.44-.3.42-.96.6-1.38.36z"/></svg>
+    {% elif platform.icon == "apple" %}
+      <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M16.78 3.5c-.78.92-1.87 1.42-2.98 1.42-1.11.01-2.26-.54-3.04-1.36-.56-.58-1.12-1.5-.8-2.35.74-2.04 2.94-2.06 4.02-2.06 1.06 0 2.14.71 2.56 1.94-.01.01-.15.91-.56 1.76zm2.34 9.18c-.01-2.76 1.53-4.4 1.63-4.49-1.92-2.8-4.85-2.93-5.91-2.98-2.5-.15-3.95 1.54-4.7 1.54-.75 0-2.38-1.5-3.91-1.46-1.95.04-3.75 1.48-4.75 3.76-2.05 4.5-.54 11.24 1.46 14.92.97 1.71 2.64 3.61 4.6 3.55 1.82-.05 2.5-1.14 4.7-1.14 2.2 0 2.79 1.14 4.69 1.11 1.93-.03 3.16-1.75 4.13-3.47 1.28-2.19 1.65-4.32 1.67-4.43-.03-.01-3.27-1.26-3.29-4.98z"/></svg>
+    {% elif platform.icon == "bandcamp" %}
+      <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M3.4 3.1C2.2 5 1.4 7.1 1 9.3c-.2 1.3-.1 2.7.3 4 .9 2.5 2.8 4.6 5.2 5.9 1.5.8 3.1 1.2 4.8 1.3 1.8.1 3.5-.2 5.2-.9 2.2-.9 4.1-2.6 5.3-4.7 1.1-1.9 1.5-4.1 1.2-6.3-.3-2.1-1.3-4.1-2.9-5.6C18 1.5 15.5.5 13 .4c-1.6 0-3.2.3-4.7.9-1.9.7-3.5 1.9-4.9 3.4zm2.6 5.7c.3-.1.5-.1.8 0l3.8.9c.2.1.4.2.5.4l2.5 3.9c.1.2.3.3.5.3l3.5-.2c.3 0 .6.2.7.5.1.3-.1.6-.4.7l-5.2 1.4c-.2.1-.5 0-.7-.2l-3.4-4c-.1-.2-.3-.3-.5-.3l-2.5.4c-.3 0-.6-.2-.7-.5-.1-.3.1-.6.4-.7l3.5-1.6z"/></svg>
+    {% endif %}
+    {{ platform.name }}
+  </a>
+{% endmacro %}
+
+<main>
+  <section class="relative overflow-hidden">
+    <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-navy to-white"></div>
+    <div aria-hidden="true" class="absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-orange/25 blur-3xl"></div>
+    <div class="relative mx-auto max-w-6xl px-4 pt-14 pb-10">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-xs font-semibold text-navy shadow-soft">
+          <span class="inline-block h-2 w-2 rounded-full bg-green-500" aria-hidden="true"></span>
+          So1loh / Discography
+        </div>
+        <h1 class="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl">Discography</h1>
+        <p class="mt-4 text-base leading-relaxed text-white/90">
+          1999年、Soichiro “So1loh” NittaがAYPレーベルでリリースした全作品を記録しています。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 pt-2 pb-8">
+    <div class="flex flex-wrap items-center gap-3 text-xs text-slate-200">
+      <span class="font-semibold text-white">Platforms:</span>
+      <span class="inline-flex items-center gap-1 rounded-full bg-black/20 px-3 py-1">
+        <span class="h-2 w-2 rounded-full bg-green-500"></span> Spotify
+      </span>
+      <span class="inline-flex items-center gap-1 rounded-full bg-black/20 px-3 py-1">
+        <span class="h-2 w-2 rounded-full bg-blue-500"></span> Apple Music
+      </span>
+      <span class="inline-flex items-center gap-1 rounded-full bg-black/20 px-3 py-1">
+        <span class="h-2 w-2 rounded-full bg-purple-500"></span> Bandcamp
+      </span>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 pb-16">
+    <div class="grid gap-8">
+      {% for release in discography.releases %}
+        <article class="release-card rounded-3xl border border-slate-200 bg-white/80 glass shadow-soft overflow-hidden">
+          <div class="p-6 sm:p-8">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+              <div class="flex-1">
+                <div class="flex items-center gap-2">
+                  <span class="rounded-full px-2.5 py-0.5 text-xs font-semibold {{ release.tagColor }}">{{ release.type }}</span>
+                  <span class="text-xs text-grayish">{{ release.year }}</span>
+                </div>
+                <h2 class="mt-2 text-xl font-bold text-navy">{{ release.title }}</h2>
+                <p class="mt-1 text-sm text-slate-600">{{ release.description }}</p>
+                {% if release.notes %}
+                  <p class="mt-1 text-xs text-grayish">{{ release.notes }}</p>
+                {% endif %}
+                <div class="mt-3 flex flex-wrap gap-2">
+                  {% for platform in release.platforms %}
+                    {{ platformLink(platform) }}
+                  {% endfor %}
+                  {% if release.tracklist %}
+                    <button class="tracklist-toggle text-sm font-medium text-orange" aria-expanded="false">Tracklist</button>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            {% if release.tracklist %}
+              <div class="tracklist-body mt-4 border-t border-slate-200 pt-4">
+                <table class="w-full text-sm">
+                  <thead>
+                    <tr class="text-xs text-grayish">
+                      <th class="w-8 text-left font-medium">#</th>
+                      <th class="text-left font-medium">Title</th>
+                      <th class="w-16 text-right font-medium">Duration</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for track in release.tracklist %}
+                      <tr class="border-t border-slate-100">
+                        <td class="py-2 text-grayish">{{ loop.index }}</td>
+                        <td class="py-2 font-medium text-slate-800">{{ track.title }}</td>
+                        <td class="py-2 text-right text-grayish">{{ track.duration or "—" }}</td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            {% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 pb-16">
+    <div class="rounded-3xl bg-navy p-8 text-white shadow-soft text-center">
+      <h2 class="text-2xl font-bold">Follow So1loh on Spotify</h2>
+      <p class="mt-2 text-white/85">最新リリースはここからチェック。</p>
+      <a
+        href="https://open.spotify.com/artist/6zgaYLHs2C1Kijp1JJzIMq"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-green-500 px-6 py-3 text-sm font-semibold text-white hover:bg-green-600"
+      >
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.52 17.34c-.24.36-.72.48-1.08.24-2.88-1.68-6.48-2.16-10.8-1.2-.42.12-.84-.12-.96-.54-.12-.42.12-.84.54-.96 4.68-1.08 8.64-.48 11.88 1.44.36.24.48.72.24 1.08zm1.44-3.24c-.3.42-.84.6-1.26.3-3.24-1.92-8.16-2.52-12-1.44-.48.12-1.02-.18-1.14-.66-.12-.48.18-1.02.66-1.14 4.44-1.2 9.72-.48 13.44 1.68.42.24.6.84.3 1.26zm.12-3.42c-3.84-2.28-10.2-2.52-13.8-1.38-.54.18-1.14-.12-1.32-.66-.18-.54.12-1.14.66-1.32 4.2-1.32 11.16-1.08 15.48 1.5.48.3.66.96.36 1.44-.3.42-.96.6-1.38.36z"/></svg>
+        Open in Spotify
+      </a>
+    </div>
+  </section>
+</main>

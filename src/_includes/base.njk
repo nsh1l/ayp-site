@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title | default(site.title) }}</title>
+    <meta name="description" content="{{ description | default(site.description) }}" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+    <script>
+      window.AYP = window.AYP || {};
+      const loaderKey = "aypLoadingShown";
+      const shouldShowLoader = !localStorage.getItem(loaderKey);
+      window.AYP.shouldShowLoader = shouldShowLoader;
+      document.documentElement.dataset.aypShowLoader = shouldShowLoader ? "1" : "0";
+
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: "#0B1F3A",
+              orange: "#F97316",
+              grayish: "#6B7280",
+              ink: "#0F172A"
+            },
+            boxShadow: {
+              soft: "0 10px 30px rgba(2, 6, 23, 0.10)"
+            }
+          }
+        }
+      };
+    </script>
+    <style>
+      body {
+        margin: 0;
+      }
+
+      #global-inner-sea {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        overflow: hidden;
+        background: linear-gradient(
+          180deg,
+          rgba(27, 79, 114, 0.95) 0%,
+          rgba(7, 39, 66, 0.92) 48%,
+          rgba(5, 9, 26, 0.9) 80%
+        );
+      }
+
+      .inner-sea {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+      }
+
+      .sea-glow {
+        position: absolute;
+        left: 50%;
+        bottom: 14%;
+        width: min(70vw, 720px);
+        height: 220px;
+        transform: translateX(-50%);
+        background: radial-gradient(
+          ellipse at center,
+          rgba(129, 212, 250, 0.34) 0%,
+          rgba(46, 134, 193, 0.14) 48%,
+          rgba(27, 79, 114, 0) 74%
+        );
+        filter: blur(2px);
+      }
+
+      .wave {
+        position: absolute;
+        left: -10%;
+        width: 120%;
+        border-radius: 9999px;
+      }
+
+      .wave-1 {
+        bottom: 18%;
+        height: 44px;
+        background: rgba(129, 212, 250, 0.22);
+      }
+
+      .wave-2 {
+        bottom: 13%;
+        height: 58px;
+        background: rgba(46, 134, 193, 0.16);
+      }
+
+      .wave-3 {
+        bottom: 8%;
+        height: 74px;
+        background: rgba(13, 59, 102, 0.14);
+      }
+
+      .ripple {
+        position: absolute;
+        border: 1px solid rgba(129, 212, 250, 0.45);
+        border-radius: 9999px;
+        opacity: 0.68;
+      }
+
+      .ripple-1 {
+        left: 22%;
+        bottom: 16%;
+        width: 180px;
+        height: 42px;
+      }
+
+      .ripple-2 {
+        right: 20%;
+        bottom: 12%;
+        width: 220px;
+        height: 50px;
+      }
+
+      #loading-screen {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: grid;
+        place-items: center;
+        background: transparent;
+      }
+
+      :root[data-ayp-show-loader="0"] #loading-screen {
+        display: none !important;
+      }
+
+      #page-content {
+        position: relative;
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body class="bg-transparent text-slate-900">
+    <div id="global-inner-sea" aria-hidden="true">
+      <div class="inner-sea">
+        <div class="sea-glow"></div>
+        <div class="wave wave-1"></div>
+        <div class="wave wave-2"></div>
+        <div class="wave wave-3"></div>
+        <div class="ripple ripple-1"></div>
+        <div class="ripple ripple-2"></div>
+      </div>
+    </div>
+
+    {% include "loader.njk" %}
+    {% include "header.njk" %}
+
+    <div id="page-content">
+      {{ content | safe }}
+    </div>
+
+    {% include "footer.njk" %}
+    {% include "scripts.njk" %}
+  </body>
+</html>

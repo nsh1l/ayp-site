@@ -1,0 +1,124 @@
+<script>
+  document.getElementById("year")?.textContent = new Date().getFullYear();
+
+  const loader = document.getElementById("loading-screen");
+  const logoVideo = document.getElementById("loading-logo");
+  const page = document.getElementById("page-content");
+  const LOADING_KEY = "aypLoadingShown";
+  const shouldShowLoader = document.documentElement.dataset.aypShowLoader === "1";
+
+  let revealed = false;
+  function revealPage() {
+    if (revealed) return;
+    revealed = true;
+
+    if (window.anime && loader) {
+      anime({
+        targets: loader,
+        opacity: [1, 0],
+        duration: 700,
+        easing: "easeOutQuad",
+        complete: () => {
+          loader.style.display = "none";
+        }
+      });
+    } else if (loader) {
+      loader.style.display = "none";
+    }
+
+    if (page) {
+      anime({
+        targets: page,
+        opacity: [0, 1],
+        translateY: [8, 0],
+        duration: 900,
+        easing: "easeOutCubic"
+      });
+    }
+  }
+
+  function animateInnerSea() {
+    if (!window.anime) return;
+
+    anime({
+      targets: ".wave-1",
+      translateX: ["-8vw", "8vw"],
+      duration: 5200,
+      easing: "easeInOutSine",
+      direction: "alternate",
+      loop: true
+    });
+
+    anime({
+      targets: ".wave-2",
+      translateX: ["10vw", "-10vw"],
+      duration: 6400,
+      easing: "easeInOutSine",
+      direction: "alternate",
+      loop: true
+    });
+
+    anime({
+      targets: ".wave-3",
+      translateX: ["-6vw", "6vw"],
+      duration: 7600,
+      easing: "easeInOutSine",
+      direction: "alternate",
+      loop: true
+    });
+
+    anime({
+      targets: ".ripple-1, .ripple-2",
+      scaleX: [1, 1.07],
+      scaleY: [1, 1.2],
+      opacity: [0.55, 0.18],
+      duration: 2800,
+      delay: anime.stagger(260),
+      easing: "easeInOutSine",
+      direction: "alternate",
+      loop: true
+    });
+  }
+
+  function initTracklistToggles() {
+    document.querySelectorAll(".tracklist-toggle").forEach((toggle) => {
+      const card = toggle.closest(".release-card");
+      const body = card?.querySelector(".tracklist-body") ?? toggle.nextElementSibling;
+      if (!body) return;
+
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.addEventListener("click", () => {
+        const nextState = !toggle.classList.contains("open");
+        toggle.classList.toggle("open", nextState);
+        body.classList.toggle("open", nextState);
+        toggle.setAttribute("aria-expanded", nextState ? "true" : "false");
+        body.style.maxHeight = nextState ? `${body.scrollHeight}px` : "";
+      });
+    });
+  }
+
+  animateInnerSea();
+  initTracklistToggles();
+
+  if (shouldShowLoader && loader && logoVideo) {
+    localStorage.setItem(LOADING_KEY, "1");
+    logoVideo
+      .play()
+      .then(() => {
+        const safetyTimeout = setTimeout(revealPage, 5000);
+        logoVideo.addEventListener("ended", () => {
+          clearTimeout(safetyTimeout);
+          revealPage();
+        });
+        logoVideo.addEventListener("error", () => {
+          clearTimeout(safetyTimeout);
+          revealPage();
+        });
+      })
+      .catch(() => {
+        setTimeout(revealPage, 600);
+      });
+  } else {
+    revealPage();
+  }
+</script>
