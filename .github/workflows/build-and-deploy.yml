@@ -33,4 +33,5 @@ jobs:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_TOKEN }}
           projectName: "ayp-site"
+          buildCommand: "npm run build"
           directory: './dist'
