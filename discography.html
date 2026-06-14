@@ -1,0 +1,721 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Discography｜So1loh｜Always Yesterday Party</title>
+    <meta
+      name="description"
+      content="So1loh（Soichiro Nitta / AYP）のディスコグラフィ。全リリース・トラックリストを掲載。"
+    />
+
+    <!-- Tailwind (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: "#0B1F3A",
+              orange: "#F97316",
+              grayish: "#6B7280",
+              ink: "#0F172A",
+            },
+            boxShadow: {
+              soft: "0 10px 30px rgba(2, 6, 23, 0.10)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      .glass {
+        background: rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(10px);
+      }
+
+      /* Background motion */
+      #global-inner-sea {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        overflow: hidden;
+        background: linear-gradient(
+          180deg,
+          rgba(93, 173, 226, 0.95) 0%,
+          rgba(46, 134, 193, 0.88) 35%,
+          rgba(27, 79, 114, 0.78) 70%,
+          rgba(248, 250, 252, 0.93) 100%
+        );
+      }
+
+      .inner-sea {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+      }
+
+      .sea-glow {
+        position: absolute;
+        left: 50%;
+        bottom: 14%;
+        width: min(70vw, 720px);
+        height: 220px;
+        transform: translateX(-50%);
+        background: radial-gradient(
+          ellipse at center,
+          rgba(129, 212, 250, 0.34) 0%,
+          rgba(46, 134, 193, 0.14) 48%,
+          rgba(27, 79, 114, 0) 74%
+        );
+        filter: blur(2px);
+      }
+
+      .wave {
+        position: absolute;
+        left: -10%;
+        width: 120%;
+        border-radius: 9999px;
+      }
+
+      .wave-1 {
+        bottom: 18%;
+        height: 44px;
+        background: rgba(129, 212, 250, 0.22);
+      }
+
+      .wave-2 {
+        bottom: 13%;
+        height: 58px;
+        background: rgba(46, 134, 193, 0.16);
+      }
+
+      .wave-3 {
+        bottom: 8%;
+        height: 74px;
+        background: rgba(13, 59, 102, 0.14);
+      }
+
+      .ripple {
+        position: absolute;
+        border: 1px solid rgba(129, 212, 250, 0.45);
+        border-radius: 9999px;
+        opacity: 0.68;
+      }
+
+      .ripple-1 {
+        left: 22%;
+        bottom: 16%;
+        width: 180px;
+        height: 42px;
+      }
+
+      .ripple-2 {
+        right: 20%;
+        bottom: 12%;
+        width: 220px;
+        height: 50px;
+      }
+
+      /* Loading */
+      #loading-screen {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: grid;
+        place-items: center;
+        background: transparent;
+      }
+
+      #loading-logo {
+        width: min(66vw, 480px);
+        border-radius: 16px;
+        box-shadow: 0 16px 50px rgba(0, 0, 0, 0.28);
+      }
+
+      #page-content {
+        position: relative;
+        z-index: 10;
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      /* Discography-specific */
+      .release-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .release-card:hover {
+        transform: translateY(-2px);
+      }
+
+      .tracklist-toggle {
+        cursor: pointer;
+        user-select: none;
+      }
+      .tracklist-toggle::after {
+        content: "▸";
+        display: inline-block;
+        margin-left: 6px;
+        transition: transform 0.2s ease;
+      }
+      .tracklist-toggle.open::after {
+        transform: rotate(90deg);
+      }
+      .tracklist-body {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+      .tracklist-body.open {
+        max-height: 600px;
+      }
+    </style>
+  </head>
+
+  <body class="bg-transparent text-slate-900">
+    <div id="global-inner-sea" aria-hidden="true">
+      <div class="inner-sea">
+        <div class="sea-glow"></div>
+        <div class="wave wave-1"></div>
+        <div class="wave wave-2"></div>
+        <div class="wave wave-3"></div>
+        <div class="ripple ripple-1"></div>
+        <div class="ripple ripple-2"></div>
+      </div>
+    </div>
+
+    <div id="loading-screen" aria-label="Loading animation">
+      <video id="loading-logo" autoplay muted playsinline preload="auto">
+        <source src="/assets/fix_aypモーションロゴ.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <div id="page-content">
+      <!-- Top bar -->
+      <header class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/90 backdrop-blur">
+        <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
+          <a href="/" class="flex items-center gap-3" aria-label="AYP Home">
+            <img
+              src="/assets/ayp_logo_square_nuttsponchon-3.jpg"
+              alt="AYP ロゴ"
+              class="h-10 w-10 rounded-xl object-cover"
+              loading="eager"
+            />
+            <div>
+              <div class="text-sm font-semibold tracking-wide text-navy">Always Yesterday Party</div>
+              <div class="text-xs text-grayish">Corporate Site</div>
+            </div>
+          </a>
+
+          <nav class="hidden items-center gap-6 md:flex" aria-label="Primary">
+            <a class="text-sm font-medium text-slate-700 hover:text-navy" href="/index.html">Home</a>
+            <a class="text-sm font-medium text-slate-700 hover:text-navy" href="/about.html">理念</a>
+            <a class="text-sm font-medium text-slate-700 hover:text-navy" href="/projects.html">事業</a>
+            <a class="text-sm font-medium text-orange font-semibold" href="/discography.html">Discography</a>
+            <a class="text-sm font-medium text-slate-700 hover:text-navy" href="/contact.html">お問い合わせ</a>
+          </nav>
+
+          <a
+            href="/contact.html"
+            class="inline-flex items-center justify-center rounded-full bg-orange px-4 py-2 text-sm font-semibold text-white shadow-soft hover:opacity-95"
+          >
+            相談する
+          </a>
+        </div>
+
+        <div class="mx-auto max-w-6xl px-4 pb-3 md:hidden">
+          <nav class="flex flex-wrap gap-3" aria-label="Primary">
+            <a class="rounded-full border border-slate-200 px-4 py-2 text-sm" href="/index.html">Home</a>
+            <a class="rounded-full border border-slate-200 px-4 py-2 text-sm" href="/about.html">理念</a>
+            <a class="rounded-full border border-slate-200 px-4 py-2 text-sm" href="/projects.html">事業</a>
+            <a class="rounded-full bg-orange/10 border border-orange/30 px-4 py-2 text-sm font-semibold text-orange" href="/discography.html">Discography</a>
+            <a class="rounded-full border border-slate-200 px-4 py-2 text-sm" href="/contact.html">お問い合わせ</a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <!-- Hero -->
+        <section class="relative overflow-hidden">
+          <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/60 to-white/70" />
+          <div aria-hidden="true" class="absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-orange/25 blur-3xl" />
+
+          <div class="relative mx-auto max-w-6xl px-4 pt-14 pb-10 sm:pt-20 sm:pb-14">
+            <div class="text-center">
+              <div class="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-xs font-semibold text-navy shadow-soft">
+                <span class="inline-block h-2 w-2 rounded-full bg-orange" />
+                So1loh / Beat Producer
+              </div>
+              <h1 class="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+                Discography
+              </h1>
+              <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/90">
+                1999年、広島県尾道市生まれのビートメイカー So1loh（新田宗一郎）が
+                AYPレーベルよりリリースしてきた全作品。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Filter / Legend -->
+        <section class="mx-auto max-w-6xl px-4 pt-2 pb-6">
+          <div class="flex flex-wrap items-center gap-3 text-xs text-slate-700">
+            <span class="font-semibold text-navy">Platforms:</span>
+            <span class="inline-flex items-center gap-1 rounded-full bg-black/5 px-3 py-1">
+              <span class="h-2 w-2 rounded-full bg-green-500"></span> Spotify
+            </span>
+            <span class="inline-flex items-center gap-1 rounded-full bg-black/5 px-3 py-1">
+              <span class="h-2 w-2 rounded-full bg-blue-500"></span> Apple Music
+            </span>
+            <span class="inline-flex items-center gap-1 rounded-full bg-black/5 px-3 py-1">
+              <span class="h-2 w-2 rounded-full bg-purple-500"></span> Bandcamp
+            </span>
+            <span class="ml-auto text-xs text-grayish">※ タイトルをタップでトラックリスト表示</span>
+          </div>
+        </section>
+
+        <!-- Discography list -->
+        <section class="mx-auto max-w-6xl px-4 pb-16">
+          <div class="grid gap-8">
+
+            <!-- ========================================================================= -->
+            <!-- 5 Hours 10 minutes - Single (2026) -->
+            <!-- ========================================================================= -->
+            <div class="release-card rounded-3xl border border-slate-200 bg-white/80 glass shadow-soft overflow-hidden">
+              <div class="p-6 sm:p-8">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                  <div class="flex-1">
+                    <div class="flex items-center gap-2">
+                      <span class="rounded-full bg-green-500/15 px-2.5 py-0.5 text-xs font-semibold text-green-700">Single</span>
+                      <span class="text-xs text-grayish">2026</span>
+                    </div>
+                    <h2 class="mt-2 text-xl font-bold text-navy">5 Hours 10 minutes</h2>
+                    <p class="mt-1 text-sm text-slate-600">1 song · 2:20</p>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                      <a href="https://open.spotify.com/album/0EQyLCYNzsb2HYRR4YjNyY" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium text-green-700 hover:bg-green-500/20">
+                        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.52 17.34c-.24.36-.72.48-1.08.24-2.88-1.68-6.48-2.16-10.8-1.2-.42.12-.84-.12-.96-.54-.12-.42.12-.84.54-.96 4.68-1.08 8.64-.48 11.88 1.44.36.24.48.72.24 1.08zm1.44-3.24c-.3.42-.84.6-1.26.3-3.24-1.92-8.16-2.52-12-1.44-.48.12-1.02-.18-1.14-.66-.12-.48.18-1.02.66-1.14 4.44-1.2 9.72-.48 13.44 1.68.42.24.6.84.3 1.26zm.12-3.42c-3.84-2.28-10.2-2.52-13.8-1.38-.54.18-1.14-.12-1.32-.66-.18-.54.12-1.14.66-1.32 4.2-1.32 11.16-1.08 15.48 1.5.48.3.66.96.36 1.44-.3.42-.96.6-1.38.36z"/></svg>
+                        Spotify
+                      </a>
+                      <button class="tracklist-toggle text-sm font-medium text-orange" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+                        Tracklist
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="tracklist-body">
+                  <div class="mt-4 border-t border-slate-200 pt-4">
+                    <table class="w-full text-sm">
+                      <thead><tr class="text-xs text-grayish"><th class="w-8 text-left font-medium">#</th><th class="text-left font-medium">Title</th><th class="w-16 text-right font-medium">Duration</th></tr></thead>
+                      <tbody>
+                        <tr class="border-t border-slate-100"><td class="py-2 text-grayish">1</td><td class="py-2 font-medium text-slate-800">5 Hours 10 minutes</td><td class="py-2 text-right text-grayish">2:20</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- void 2 - EP (2025) -->
+            <!-- ========================================================================= -->
+            <div class="release-card rounded-3xl border border-slate-200 bg-white/80 glass shadow-soft overflow-hidden">
+              <div class="p-6 sm:p-8">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                  <div class="flex-1">
+                    <div class="flex items-center gap-2">
+                      <span class="rounded-full bg-purple-500/15 px-2.5 py-0.5 text-xs font-semibold text-purple-700">EP</span>
+                      <span class="text-xs text-grayish">2025</span>
+                    </div>
+                    <h2 class="mt-2 text-xl font-bold text-navy">void 2</h2>
+                    <p class="mt-1 text-sm text-slate-600">5 songs · 19:00</p>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                      <a href="https://open.spotify.com/album/0WqlAQowMkyX23dBCvaSWY" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium text-green-700 hover:bg-green-500/20">
+                        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.52 17.34c-.24.36-.72.48-1.08.24-2.88-1.68-6.48-2.16-10.8-1.2-.42.12-.84-.12-.96-.54-.12-.42.12-.84.54-.96 4.68-1.08 8.64-.48 11.88 1.44.36.24.48.72.24 1.08zm1.44-3.24c-.3.42-.84.6-1.26.3-3.24-1.92-8.16-2.52-12-1.44-.48.12-1.02-.18-1.14-.66-.12-.48.18-1.02.66-1.14 4.44-1.2 9.72-.48 13.44 1.68.42.24.6.84.3 1.26zm.12-3.42c-3.84-2.28-10.2-2.52-13.8-1.38-.54.18-1.14-.12-1.32-.66-.18-.54.12-1.14.66-1.32 4.2-1.32 11.16-1.08 15.48 1.5.48.3.66.96.36 1.44-.3.42-.96.6-1.38.36z"/></svg>
+                        Spotify
+                      </a>
+                      <button class="tracklist-toggle text-sm font-medium text-orange" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+                        Tracklist
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="tracklist-body">
+                  <div class="mt-4 border-t border-slate-200 pt-4">
+                    <table class="w-full text-sm">
+                      <thead><tr class="text-xs text-grayish"><th class="w-8 text-left font-medium">#</th><th class="text-left font-medium">Title</th><th class="w-16 text-right font-medium">Duration</th></tr></thead>
+                      <tbody>
+                        <tr class="border-t border-slate-100"><td class="py-2 text-grayish">1</td><td class="py-2 font-medium text-slate-800">Suicide Hotline Jamming</td><td class="py-2 text-right text-grayish">3:55</td></tr>
+                        <tr class="border-t border-slate-100"><td class="py-2 text-grayish">2</td><td class="py-2 font-medium text-slate-800">Unsupervised Learning</td><td class="py-2 text-right text-grayish">4:04</td></tr>
+                        <tr class="border-t border-slate-100"><td class="py-2 text-grayish">3</td><td class="py-2 font-medium text-slate-800">Eazier Said Than Done</td><td class="py-2 text-right text-grayish">3:43</td></tr>
+                        <tr class="border-t border-slate-100"><td class="py-2 text-grayish">4</td><td class="py-2 font-medium text-slate-800">Blue Note</td><td class="py-2 text-right text-grayish">3:25</td></tr>
+                        <tr class="border-t border-slate-100"><td class="py-2 text-grayish">5</td><td class="py-2 font-medium text-slate-800">Unity</td><td class="py-2 text-right text-grayish">3:53</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- void - EP (2025) -->
+            <!-- ========================================================================= -->
+            <div class="release-card rounded-3xl border border-slate-200 bg-white/80 glass shadow-soft overflow-hidden">
+              <div class="p-6 sm:p-8">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                  <div class="flex-1">
+                    <div class="flex items-center gap-2">
+                      <span class="rounded-full bg-purple-500/15 px-2.5 py-0.5 text-xs font-semibold text-purple-700">EP</span>
+                      <span class="text-xs text-grayish">2025</span>
+                    </div>
+                    <h2 class="mt-2 text-xl font-bold text-navy">void</h2>
+                    <p class="mt-1 text-sm text-slate-600">4 songs · 11:26</p>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                      <a href="https://open.spotify.com/album/6y0399JO3WVy2XBVRu4VGP" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium text-green-700 hover:bg-green-500/20">
+                        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.52 17.34c-.24.36-.72.48-1.08.24-2.88-1.68-6.48-2.16-10.8-1.2-.42.12-.84-.12-.96-.54-.12-.42.12-.84.54-.96 4.68-1.08 8.64-.48 11.88 1.44.36.24.48.72.24 1.08zm1.44-3.24c-.3.42-.84.6-1.26.3-3.24-1.92-8.16-2.52-12-1.44-.48.12-1.02-.18-1.14-.66-.12-.48.18-1.02.66-1.14 4.44-1.2 9.72-.48 13.44 1.68.42.24.6.84.3 1.26zm.12-3.42c-3.84-2.28-10.2-2.52-13.8-1.38-.54.18-1.14-.12-1.32-.66-.18-.54.12-1.14.66-1.32 4.2-1.32 11.16-1.08 15.48 1.5.48.3.66.96.36 1.44-.3.42-.96.6-1.38.36z"/></svg>
+                        Spotify
+                      </a>
+                      <a href="https://so1loh.bandcamp.com/album/void" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 rounded-full bg-purple-500/10 px-3 py-1 text-xs font-medium text-purple-700 hover:bg-purple-500/20">
+                        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M3.4 3.1C2.2 5 1.4 7.1 1 9.3c-.2 1.3-.1 2.7.3 4 .9 2.5 2.8 4.6 5.2 5.9 1.5.8 3.1 1.2 4.8 1.3 1.8.1 3.5-.2 5.2-.9 2.2-.9 4.1-2.6 5.3-4.7 1.1-1.9 1.5-4.1 1.2-6.3-.3-2.1-1.3-4.1-2.9-5.6C18 1.5 15.5.5 13 .4c-1.6 0-3.2.3-4.7.9-1.9.7-3.5 1.9-4.9 3.4zm2.6 5.7c.3-.1.5-.1.8 0l3.8.9c.2.1.4.2.5.4l2.5 3.9c.1.2.3.3.5.3l3.5-.2c.3 0 .6.2.7.5.1.3-.1.6-.4.7l-5.2 1.4c-.2.1-.5 0-.7-.2l-3.4-4c-.1-.2-.3-.3-.5-.3l-2.5.4c-.3 0-.6-.2-.7-.5-.1-.3.1-.6.4-.7l3.5-1.6z"/></svg>
+                        Bandcamp
+                      </a>
+                      <button class="tracklist-toggle text-sm font-medium text-orange" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+                        Tracklist
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="tracklist-body">
+                  <div class="mt-4 border-t border-slate-200 pt-4">
+                    <table class="w-full text-sm">
+                      <thead><tr class="text-xs text-grayish"><th class="w-8 text-left font-medium">#</th><th class="text-left font-medium">Title</th><th class="w-16 text-right font-medium">Duration</th></tr></thead>
+                      <tbody>
+                        <tr class="border-t border-slate-100"><td class="py-2 text-grayish">1</td><td class="py-2 font-medium text-slate-800">Dopamine Addiction</td><td class="py-2 text-right text-grayish">3:21</td></tr>
+                        <tr class="border-t border-slate-100"><td class="py-2 text-grayish">2</td><td class="py-2 font-medium text-slate-800">15-00</td><td class="py-2 text-right text-grayish">1:57</td></tr>
+                        <tr class="border-t border-slate-100"><td class="py-2 text-grayish">3</td><td class="py-2 font-medium text-slate-800">Lifesavers</td><td class="py-2 text-right text-grayish">2:45</td></tr>
+                        <tr class="border-t border-slate-100"><td class="py-2 text-grayish">4</td><td class="py-2 font-medium text-slate-800">08-30</td><td class="py-2 text-right text-grayish">3:23</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- 212 - Album (2024) -->
+            <!-- ========================================================================= -->
+            <div class="release-card rounded-3xl border border-slate-200 bg-white/80 glass shadow-soft overflow-hidden">
+              <div class="p-6 sm:p-8">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                  <div class="flex-1">
+                    <div class="flex items-center gap-2">
+                      <span class="rounded-full bg-orange/15 px-2.5 py-0.5 text-xs font-semibold text-orange-700">Album</span>
+                      <span class="text-xs text-grayish">2024</span>
+                    </div>
+                    <h2 class="mt-2 text-xl font-bold text-navy">212</h2>
+                    <p class="mt-1 text-sm text-slate-600">9 songs · 19 min</p>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                      <a href="https://open.spotify.com/album/2OHIOJBEYnKUa04u4AQG40" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium text-green-700 hover:bg-green-500/20">
+                        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.52 17.34c-.24.36-.72.48-1.08.24-2.88-1.68-6.48-2.16-10.8-1.2-.42.12-.84-.12-.96-.54-.12-.42.12-.84.54-.96 4.68-1.08 8.64-.48 11.88 1.44.36.24.48.72.24 1.08zm1.44-3.24c-.3.42-.84.6-1.26.3-3.24-1.92-8.16-2.52-12-1.44-.48.12-1.02-.18-1.14-.66-.12-.48.18-1.02.66-1.14 4.44-1.2 9.72-.48 13.44 1.68.42.24.6.84.3 1.26zm.12-3.42c-3.84-2.28-10.2-2.52-13.8-1.38-.54.18-1.14-.12-1.32-.66-.18-.54.12-1.14.66-1.32 4.2-1.32 11.16-1.08 15.48 1.5.48.3.66.96.36 1.44-.3.42-.96.6-1.38.36z"/></svg>
+                        Spotify
+                      </a>
+                      <a href="https://music.apple.com/us/album/212/1772748925" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 rounded-full bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-700 hover:bg-blue-500/20">
+                        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.56-1.702z"/></svg>
+                        Apple Music
+                      </a>
+                      <button class="tracklist-toggle text-sm font-medium text-orange" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+                        Tracklist
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="tracklist-body">
+                  <div class="mt-4 border-t border-slate-200 pt-4">
+                    <table class="w-full text-sm">
+                      <thead><tr class="text-xs text-grayish"><th class="w-8 text-left font-medium">#</th><th class="text-left font-medium">Title</th><th class="w-16 text-right font-medium">Duration</th></tr></thead>
+                      <tbody>
+                        <tr class="border-t border-slate-100"><td class="py-2 text-grayish">1</td><td class="py-2 font-medium text-slate-800">The Morning after I Got Fired</td><td class="py-2 text-right text-grayish">1:43</td></tr>
+                        <tr class="border-t border-slate-100"><td class="py-2 text-grayish">2</td><td class="py-2 font-medium text-slate-800">Check Bank Account</td><td class="py-2 text-right text-grayish">2:01</td></tr>
+                        <tr class="border-t border-slate-100"><td class="py-2 text-grayish">3</td><td class="py-2 font-medium text-slate-800">On Freeway</td><td class="py-2 text-right text-grayish">—</td></tr>
+                        <tr class="border-t border-slate-100"><td class="py-2 text-grayish">4</td><td class="py-2 font-medium text-slate-800">New Era Boys</td><td class="py-2 text-right text-grayish">—</td></tr>
+                        <tr class="border-t border-slate-100"><td class="py-2 text-grayish">5</td><td class="py-2 font-medium text-slate-800">Sci Fi</td><td class="py-2 text-right text-grayish">—</td></tr>
+                        <tr class="border-t border-slate-100"><td class="py-2 text-grayish">6</td><td class="py-2 font-medium text-slate-800">Mind Being Separated</td><td class="py-2 text-right text-grayish">—</td></tr>
+                        <tr class="border-t border-slate-100"><td class="py-2 text-grayish">7</td><td class="py-2 font-medium text-slate-800">Diverse</td><td class="py-2 text-right text-grayish">—</td></tr>
+                        <tr class="border-t border-slate-100"><td class="py-2 text-grayish">8</td><td class="py-2 font-medium text-slate-800">End of the Month</td><td class="py-2 text-right text-grayish">1:24</td></tr>
+                        <tr class="border-t border-slate-100"><td class="py-2 text-grayish">9</td><td class="py-2 font-medium text-slate-800">Quarantine Bonus Track</td><td class="py-2 text-right text-grayish">2:28</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- 帰省 2 (2024) -->
+            <!-- ========================================================================= -->
+            <div class="release-card rounded-3xl border border-slate-200 bg-white/80 glass shadow-soft overflow-hidden">
+              <div class="p-6 sm:p-8">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                  <div class="flex-1">
+                    <div class="flex items-center gap-2">
+                      <span class="rounded-full bg-orange/15 px-2.5 py-0.5 text-xs font-semibold text-orange-700">Album</span>
+                      <span class="text-xs text-grayish">2024</span>
+                    </div>
+                    <h2 class="mt-2 text-xl font-bold text-navy">帰省 2</h2>
+                    <p class="mt-1 text-sm text-slate-600">← 2nd album</p>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                      <a href="https://music.apple.com/us/artist/so1loh/1585251019" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 rounded-full bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-700 hover:bg-blue-500/20">
+                        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.56-1.702z"/></svg>
+                        Apple Music
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- 帰省 - EP (2023) -->
+            <!-- ========================================================================= -->
+            <div class="release-card rounded-3xl border border-slate-200 bg-white/80 glass shadow-soft overflow-hidden">
+              <div class="p-6 sm:p-8">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                  <div class="flex-1">
+                    <div class="flex items-center gap-2">
+                      <span class="rounded-full bg-purple-500/15 px-2.5 py-0.5 text-xs font-semibold text-purple-700">EP</span>
+                      <span class="text-xs text-grayish">2023</span>
+                    </div>
+                    <h2 class="mt-2 text-xl font-bold text-navy">帰省</h2>
+                    <p class="mt-1 text-sm text-slate-600">← EP</p>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                      <a href="https://music.apple.com/us/artist/so1loh/1585251019" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 rounded-full bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-700 hover:bg-blue-500/20">
+                        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.56-1.702z"/></svg>
+                        Apple Music
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- Beats510 (2023) -->
+            <!-- ========================================================================= -->
+            <div class="release-card rounded-3xl border border-slate-200 bg-white/80 glass shadow-soft overflow-hidden">
+              <div class="p-6 sm:p-8">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                  <div class="flex-1">
+                    <div class="flex items-center gap-2">
+                      <span class="rounded-full bg-orange/15 px-2.5 py-0.5 text-xs font-semibold text-orange-700">Album</span>
+                      <span class="text-xs text-grayish">2023</span>
+                    </div>
+                    <h2 class="mt-2 text-xl font-bold text-navy">Beats510</h2>
+                    <p class="mt-1 text-sm text-slate-600">← Album</p>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                      <a href="https://music.apple.com/us/artist/so1loh/1585251019" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 rounded-full bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-700 hover:bg-blue-500/20">
+                        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.56-1.702z"/></svg>
+                        Apple Music
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- Internet Tape: 2 (2022) -->
+            <!-- ========================================================================= -->
+            <div class="release-card rounded-3xl border border-slate-200 bg-white/80 glass shadow-soft overflow-hidden">
+              <div class="p-6 sm:p-8">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                  <div class="flex-1">
+                    <div class="flex items-center gap-2">
+                      <span class="rounded-full bg-orange/15 px-2.5 py-0.5 text-xs font-semibold text-orange-700">Album</span>
+                      <span class="text-xs text-grayish">2022</span>
+                    </div>
+                    <h2 class="mt-2 text-xl font-bold text-navy">Internet Tape: 2</h2>
+                    <p class="mt-1 text-sm text-slate-600">← Album</p>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                      <a href="https://music.apple.com/us/artist/so1loh/1585251019" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 rounded-full bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-700 hover:bg-blue-500/20">
+                        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.56-1.702z"/></svg>
+                        Apple Music
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- 21 (2021) -->
+            <!-- ========================================================================= -->
+            <div class="release-card rounded-3xl border border-slate-200 bg-white/80 glass shadow-soft overflow-hidden">
+              <div class="p-6 sm:p-8">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                  <div class="flex-1">
+                    <div class="flex items-center gap-2">
+                      <span class="rounded-full bg-orange/15 px-2.5 py-0.5 text-xs font-semibold text-orange-700">Album</span>
+                      <span class="text-xs text-grayish">2021</span>
+                    </div>
+                    <h2 class="mt-2 text-xl font-bold text-navy">21</h2>
+                    <p class="mt-1 text-sm text-slate-600">← Debut album</p>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                      <a href="https://music.apple.com/us/artist/so1loh/1585251019" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 rounded-full bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-700 hover:bg-blue-500/20">
+                        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.56-1.702z"/></svg>
+                        Apple Music
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- Natto (feat. 二階堂 蓉) - Single (2021) -->
+            <!-- ========================================================================= -->
+            <div class="release-card rounded-3xl border border-slate-200 bg-white/80 glass shadow-soft overflow-hidden">
+              <div class="p-6 sm:p-8">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                  <div class="flex-1">
+                    <div class="flex items-center gap-2">
+                      <span class="rounded-full bg-green-500/15 px-2.5 py-0.5 text-xs font-semibold text-green-700">Single</span>
+                      <span class="text-xs text-grayish">2021</span>
+                    </div>
+                    <h2 class="mt-2 text-xl font-bold text-navy">Natto (feat. 二階堂 蓉)</h2>
+                    <p class="mt-1 text-sm text-slate-600">1 song</p>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                      <a href="https://music.apple.com/us/artist/so1loh/1585251019" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 rounded-full bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-700 hover:bg-blue-500/20">
+                        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.56-1.702z"/></svg>
+                        Apple Music
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- September 14 - Single (2020) -->
+            <!-- ========================================================================= -->
+            <div class="release-card rounded-3xl border border-slate-200 bg-white/80 glass shadow-soft overflow-hidden">
+              <div class="p-6 sm:p-8">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                  <div class="flex-1">
+                    <div class="flex items-center gap-2">
+                      <span class="rounded-full bg-green-500/15 px-2.5 py-0.5 text-xs font-semibold text-green-700">Single</span>
+                      <span class="text-xs text-grayish">2020</span>
+                    </div>
+                    <h2 class="mt-2 text-xl font-bold text-navy">September 14</h2>
+                    <p class="mt-1 text-sm text-slate-600">1 song · Debut release</p>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                      <a href="https://music.apple.com/us/artist/so1loh/1585251019" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 rounded-full bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-700 hover:bg-blue-500/20">
+                        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.56-1.702z"/></svg>
+                        Apple Music
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Listen on Spotify CTA -->
+        <section class="mx-auto max-w-6xl px-4 pb-16">
+          <div class="rounded-3xl bg-navy p-8 text-white shadow-soft text-center">
+            <h2 class="text-2xl font-bold">Follow So1loh on Spotify</h2>
+            <p class="mt-2 text-white/85">最新リリースをチェックするならこちらから。</p>
+            <a
+              href="https://open.spotify.com/intl-ja/artist/6zgaYLHs2C1Kijp1JJzIMq"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-green-500 px-6 py-3 text-sm font-semibold text-white hover:bg-green-600"
+            >
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.52 17.34c-.24.36-.72.48-1.08.24-2.88-1.68-6.48-2.16-10.8-1.2-.42.12-.84-.12-.96-.54-.12-.42.12-.84.54-.96 4.68-1.08 8.64-.48 11.88 1.44.36.24.48.72.24 1.08zm1.44-3.24c-.3.42-.84.6-1.26.3-3.24-1.92-8.16-2.52-12-1.44-.48.12-1.02-.18-1.14-.66-.12-.48.18-1.02.66-1.14 4.44-1.2 9.72-.48 13.44 1.68.42.24.6.84.3 1.26zm.12-3.42c-3.84-2.28-10.2-2.52-13.8-1.38-.54.18-1.14-.12-1.32-.66-.18-.54.12-1.14.66-1.32 4.2-1.32 11.16-1.08 15.48 1.5.48.3.66.96.36 1.44-.3.42-.96.6-1.38.36z"/></svg>
+              Open in Spotify
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="border-t border-slate-200 bg-white">
+        <div class="mx-auto max-w-6xl px-4 py-10">
+          <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div>
+              <div class="flex items-center gap-3">
+                <img src="/assets/ayp_logo_square_nuttsponchon-3.jpg" alt="AYP" class="h-9 w-9 rounded-xl object-cover" />
+                <div>
+                  <div class="text-sm font-semibold text-navy">Always Yesterday Party</div>
+                  <div class="text-xs text-grayish">Static HTML Corporate Site</div>
+                </div>
+              </div>
+              <p class="mt-3 text-xs text-slate-600">
+                © <span id="year"></span> AYP. All rights reserved.
+              </p>
+            </div>
+
+            <div class="flex gap-4">
+              <a class="text-sm font-semibold text-slate-700 hover:text-navy" href="/index.html">Home</a>
+              <a class="text-sm font-semibold text-slate-700 hover:text-navy" href="/about.html">理念</a>
+              <a class="text-sm font-semibold text-slate-700 hover:text-navy" href="/projects.html">事業</a>
+              <a class="text-sm font-semibold text-orange" href="/discography.html">Discography</a>
+              <a class="text-sm font-semibold text-slate-700 hover:text-navy" href="/privacy.html">プライバシー</a>
+              <a class="text-sm font-semibold text-slate-700 hover:text-navy" href="/contact.html">お問い合わせ</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const loader = document.getElementById("loading-screen");
+      const logoVideo = document.getElementById("loading-logo");
+      const page = document.getElementById("page-content");
+
+      let revealed = false;
+      function revealPage() {
+        if (revealed) return;
+        revealed = true;
+
+        if (window.anime) {
+          anime({
+            targets: loader,
+            opacity: [1, 0],
+            duration: 600,
+            easing: "easeOutQuad",
+            complete: () => {
+              loader.style.display = "none";
+            },
+          });
+          anime({
+            targets: page,
+            opacity: [0, 1],
+            translateY: [8, 0],
+            duration: 700,
+            easing: "easeOutQuad",
+          });
+        } else {
+          loader.style.display = "none";
+          page.style.opacity = 1;
+          page.style.transform = "translateY(0)";
+        }
+      }
+
+      if (logoVideo) {
+        logoVideo.addEventListener("canplaythrough", () => {
+          logoVideo.play().catch(() => revealPage());
+        });
+        logoVideo.addEventListener("ended", revealPage);
+        logoVideo.addEventListener("error", revealPage);
+        setTimeout(revealPage, 4000);
+      } else {
+        revealPage();
+      }
+    </script>
+  </body>
+</html>
