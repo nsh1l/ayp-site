@@ -4,19 +4,22 @@ on:
   push:
     branches: [ master ]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          node-version: 20
+          bun-version: latest
       - name: Install dependencies
-        run: npm install
+        run: bun install
       - name: Build site
-        run: npm run build
+        run: bun run build
       - name: Deploy dist to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
@@ -24,8 +27,7 @@ jobs:
           publish_branch: gh-pages
           publish_dir: ./dist
           user_name: github-actions[bot]
-          user_email: github-actions[bot]@users.noreply.github.com
-          keep_files: true
+          user_email: 41898282+github-actions[bot]@users.noreply.github.com
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
@@ -33,5 +35,5 @@ jobs:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_TOKEN }}
           projectName: "ayp-site"
-          buildCommand: "npm run build"
-          directory: './dist'
+          buildCommand: "bun run build"
+          directory: ./dist
