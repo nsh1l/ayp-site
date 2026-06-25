@@ -28,12 +28,3 @@ jobs:
           publish_dir: ./dist
           user_name: github-actions[bot]
           user_email: 41898282+github-actions[bot]@users.noreply.github.com
-
-      - name: Publish to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
-        with:
-          apiToken: ${{ secrets.CF_API_TOKEN }}
-          accountId: ${{ secrets.CF_ACCOUNT_TOKEN }}
-          projectName: "ayp-site"
-          buildCommand: "bun run build"
-          directory: ./dist
