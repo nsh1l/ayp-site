@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "description": "Always Yesterday Party corporate static site",
   "scripts": {
-    "build": "eleventy --config .eleventy.cjs",
+    "fetch": "bun run scripts/fetch-bandcamp.mjs",
+    "build": "bun run fetch && eleventy --config .eleventy.cjs",
     "serve": "eleventy --serve --config .eleventy.cjs"
   },
   "module": "index.ts",

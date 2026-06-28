@@ -7,7 +7,7 @@ Always Yesterday Party の企業静的サイト。Eleventy でビルド、Cloudf
 - Eleventy（11ty）静的サイトジェネレーター
 - HTML / CSS / JavaScript
 - Bun（パッケージマネージャー）
-- Cloudflare Pages
+- Cloudflare Pages（Git統合 — プッシュ自動ビルド）
 
 ## ビルド・実行コマンド
 ```bash
