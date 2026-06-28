@@ -128,14 +128,26 @@ Soichiro "So1loh" Nitta
               <div class="flex flex-wrap gap-1.5">
                 {% if release.bandcamp %}
                   <a href="{{ release.bandcamp }}" target="_blank" rel="noopener noreferrer"
-                     class="inline-flex items-center gap-1 rounded-full bg-purple-500/10 px-2.5 py-1 text-xs font-medium text-purple-700 hover:bg-purple-500/20">
+                     class="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-medium bg-purple-500/10 text-purple-700 hover:bg-purple-500/20">
                     Bandcamp
+                  </a>
+                {% endif %}
+                {% if release.spotify %}
+                  <a href="{{ release.spotify }}" target="_blank" rel="noopener noreferrer"
+                     class="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-medium bg-green-500/10 text-green-700 hover:bg-green-500/20">
+                    Spotify
                   </a>
                 {% endif %}
                 {% if release.apple_music %}
                   <a href="{{ release.apple_music }}" target="_blank" rel="noopener noreferrer"
-                     class="inline-flex items-center gap-1 rounded-full bg-blue-500/10 px-2.5 py-1 text-xs font-medium text-blue-700 hover:bg-blue-500/20">
+                     class="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-medium bg-blue-500/10 text-blue-700 hover:bg-blue-500/20">
                     Apple Music
+                  </a>
+                {% endif %}
+                {% if release.youtube_music %}
+                  <a href="{{ release.youtube_music }}" target="_blank" rel="noopener noreferrer"
+                     class="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-medium bg-red-500/10 text-red-700 hover:bg-red-500/20">
+                    YouTube
                   </a>
                 {% endif %}
               </div>
