@@ -142,6 +142,24 @@
         transition: max-height 0.3s ease;
       }
       .tracklist-body.open { max-height: 2000px; }
+
+      /* Animation initial states */
+      [data-animate] {
+        opacity: 0;
+      }
+      [data-animate-child] {
+        opacity: 0;
+      }
+      .reveal-line {
+        display: block;
+        opacity: 0;
+      }
+      .hero-line {
+        opacity: 0;
+      }
+      .hero-btn {
+        opacity: 0;
+      }
     </style>
   </head>
   <body class="bg-transparent text-slate-900">

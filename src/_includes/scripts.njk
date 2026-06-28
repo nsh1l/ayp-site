@@ -32,11 +32,165 @@
         opacity: [0, 1],
         translateY: [8, 0],
         duration: 900,
-        easing: "easeOutCubic"
+        easing: "easeOutCubic",
+        begin: heroEntrance
       });
     }
   }
 
+  /* ─── HERO ENTRANCE ─── */
+  function heroEntrance() {
+    if (!window.anime) return;
+
+    // Pulse the orange dot
+    anime({
+      targets: ".hero-dot",
+      scale: [1, 1.6],
+      opacity: [1, 0.4],
+      duration: 1200,
+      easing: "easeInOutSine",
+      direction: "alternate",
+      loop: true
+    });
+
+    // Hero brand lines: stagger each line
+    const heroLines = document.querySelectorAll(".hero-line");
+    anime({
+      targets: heroLines,
+      opacity: [0, 1],
+      translateY: [40, 0],
+      rotateX: [12, 0],
+      filter: ["blur(8px)", "blur(0px)"],
+      duration: 1100,
+      delay: anime.stagger(350, { start: 300 }),
+      easing: "easeOutCubic"
+    });
+
+    // Hero buttons: stagger after text
+    anime({
+      targets: ".hero-btn",
+      opacity: [0, 1],
+      translateY: [20, 0],
+      scale: [0.92, 1],
+      duration: 800,
+      delay: anime.stagger(150, { start: 1400 }),
+      easing: "easeOutBack"
+    });
+  }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  function setupScrollAnimations() {
+    if (!window.anime) return;
+    const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (isReduced) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const type = el.dataset.animate || "fadeUp";
+        const stagger = el.dataset.stagger || "0";
+        const delay = parseInt(el.dataset.delay || "0");
+
+        if (type === "fadeUp") {
+          anime({
+            targets: el,
+            opacity: [0, 1],
+            translateY: [36, 0],
+            duration: 700,
+            delay,
+            easing: "easeOutCubic"
+          });
+        }
+
+        if (type === "staggerChildren" && stagger) {
+          const children = el.querySelectorAll("[data-animate-child]");
+          anime({
+            targets: children,
+            opacity: [0, 1],
+            translateY: [28, 0],
+            scale: [0.95, 1],
+            duration: 600,
+            delay: anime.stagger(parseInt(stagger), { start: delay }),
+            easing: "easeOutCubic"
+          });
+        }
+
+        if (type === "lineReveal") {
+          // Reveal the container first
+          anime({
+            targets: el,
+            opacity: [0, 1],
+            duration: 400,
+            easing: "easeOutQuad"
+          });
+          // Then stagger the lines
+          const lines = el.querySelectorAll(".reveal-line");
+          anime({
+            targets: lines,
+            opacity: [0, 1],
+            translateY: [20, 0],
+            duration: 500,
+            delay: anime.stagger(60, { start: delay }),
+            easing: "easeOutQuad"
+          });
+        }
+
+        observer.unobserve(el);
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+
+    document.querySelectorAll("[data-animate]").forEach((el) => observer.observe(el));
+  }
+
+  /* ─── AMBIENT FLOATING PARTICLES ─── */
+  function setupAmbientParticles() {
+    if (!window.anime) return;
+    const bgOrbs = document.querySelectorAll(".hero-orb");
+    bgOrbs.forEach((orb, i) => {
+      const driftX = (i % 2 === 0 ? 1 : -1) * (12 + i * 8);
+      const driftY = -(8 + i * 6);
+      const dur = 6000 + i * 2000;
+      anime({
+        targets: orb,
+        translateX: [0, driftX],
+        translateY: [0, driftY],
+        scale: [1, 1.05 + i * 0.02],
+        duration: dur,
+        direction: "alternate",
+        easing: "easeInOutSine",
+        loop: true
+      });
+    });
+  }
+
+  /* ─── DISCography CARD HOVER ─── */
+  function setupCardHover() {
+    document.querySelectorAll(".disc-card").forEach((card) => {
+      card.addEventListener("mouseenter", () => {
+        anime({
+          targets: card,
+          scale: 1.02,
+          translateY: -4,
+          boxShadow: "0 16px 40px rgba(0,0,0,0.12)",
+          duration: 300,
+          easing: "easeOutCubic"
+        });
+      });
+      card.addEventListener("mouseleave", () => {
+        anime({
+          targets: card,
+          scale: 1,
+          translateY: 0,
+          boxShadow: "0 10px 30px rgba(2, 6, 23, 0.10)",
+          duration: 300,
+          easing: "easeOutCubic"
+        });
+      });
+    });
+  }
+
+  /* ─── INNER SEA (existing) ─── */
   function animateInnerSea() {
     if (!window.anime) return;
 
@@ -80,6 +234,7 @@
     });
   }
 
+  /* ─── TRACKLIST TOGGLES ─── */
   function initTracklistToggles() {
     document.querySelectorAll(".tracklist-toggle").forEach((toggle) => {
       const card = toggle.closest(".release-card");
@@ -97,8 +252,10 @@
     });
   }
 
+  /* ─── BOOT ─── */
   animateInnerSea();
   initTracklistToggles();
+  setupScrollAnimations();
 
   if (shouldShowLoader && loader && logoVideo) {
     localStorage.setItem(LOADING_KEY, "1");
@@ -119,6 +276,31 @@
         setTimeout(revealPage, 600);
       });
   } else {
-    revealPage();
+    // Inline reveal so heroEntrance runs inside page fade
+    if (page) {
+      anime({
+        targets: page,
+        opacity: [0, 1],
+        translateY: [8, 0],
+        duration: 900,
+        easing: "easeOutCubic",
+        begin: () => {
+          heroEntrance();
+          setupAmbientParticles();
+          setupCardHover();
+        }
+      });
+    }
+    if (loader) loader.style.display = "none";
   }
+
+  // When loader finishes (the revealPage path), call setup that needs page visible
+  const origReveal = revealPage;
+  revealPage = function() {
+    origReveal();
+    setTimeout(() => {
+      setupAmbientParticles();
+      setupCardHover();
+    }, 300);
+  };
 </script>
