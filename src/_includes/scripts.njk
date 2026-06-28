@@ -8,6 +8,15 @@
   const shouldShowLoader = document.documentElement.dataset.aypShowLoader === "1";
 
   let revealed = false;
+
+  /* ─── Set initial hidden states via anime (not CSS!) ─── */
+  if (window.anime) {
+    anime.set(".hero-line, .hero-btn", { opacity: 0 });
+    anime.set("[data-animate]", { opacity: 0 });
+    anime.set("[data-animate-child]", { opacity: 0 });
+    anime.set(".reveal-line", { opacity: 0 });
+  }
+
   function revealPage() {
     if (revealed) return;
     revealed = true;

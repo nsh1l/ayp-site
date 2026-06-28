@@ -143,22 +143,14 @@
       }
       .tracklist-body.open { max-height: 2000px; }
 
-      /* Animation initial states */
-      [data-animate] {
-        opacity: 0;
-      }
-      [data-animate-child] {
-        opacity: 0;
-      }
-      .reveal-line {
-        display: block;
-        opacity: 0;
-      }
-      .hero-line {
-        opacity: 0;
-      }
-      .hero-btn {
-        opacity: 0;
+      /* Reduced motion: no animation at all */
+      .reveal-line { display: block; }
+      @media (prefers-reduced-motion: reduce) {
+        [data-animate] { opacity: 1 !important; }
+        [data-animate-child] { opacity: 1 !important; }
+        .reveal-line { opacity: 1 !important; }
+        .hero-line { opacity: 1 !important; }
+        .hero-btn { opacity: 1 !important; }
       }
     </style>
   </head>
