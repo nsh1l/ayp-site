@@ -145,10 +145,24 @@
 
       /* Reduced motion: no animation at all */
       .reveal-line { display: block; }
+
+      /* Animation initial states — hidden until anime activates */
+      [data-animate],
+      [data-animate-child],
+      .reveal-line {
+        opacity: 0;
+      }
+
+      /* Safety net: if anime never fires, show everything after 4s */
+      @keyframes anim-safety { to { opacity: 1; } }
+      [data-animate] { animation: anim-safety 1ms 4s forwards; }
+      [data-animate-child] { animation: anim-safety 1ms 4.5s forwards; }
+      .reveal-line { animation: anim-safety 1ms 4s forwards; }
+
       @media (prefers-reduced-motion: reduce) {
-        [data-animate] { opacity: 1 !important; }
-        [data-animate-child] { opacity: 1 !important; }
-        .reveal-line { opacity: 1 !important; }
+        [data-animate] { opacity: 1 !important; animation: none !important; }
+        [data-animate-child] { opacity: 1 !important; animation: none !important; }
+        .reveal-line { opacity: 1 !important; animation: none !important; }
         .hero-line { opacity: 1 !important; }
         .hero-btn { opacity: 1 !important; }
       }

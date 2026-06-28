@@ -9,14 +9,6 @@
 
   let revealed = false;
 
-  /* ─── Set initial hidden states via anime (not CSS!) ─── */
-  if (window.anime) {
-    anime.set(".hero-line, .hero-btn", { opacity: 0 });
-    anime.set("[data-animate]", { opacity: 0 });
-    anime.set("[data-animate-child]", { opacity: 0 });
-    anime.set(".reveal-line", { opacity: 0 });
-  }
-
   function revealPage() {
     if (revealed) return;
     revealed = true;
@@ -38,7 +30,6 @@
     if (page) {
       anime({
         targets: page,
-        opacity: [0, 1],
         translateY: [8, 0],
         duration: 900,
         easing: "easeOutCubic",
@@ -50,6 +41,11 @@
   /* ─── HERO ENTRANCE ─── */
   function heroEntrance() {
     if (!window.anime) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    // Immediately hide hero elements before first render frame
+    anime.set(".hero-line", { opacity: 0 });
+    anime.set(".hero-btn", { opacity: 0 });
 
     // Pulse the orange dot
     anime({
@@ -289,7 +285,6 @@
     if (page) {
       anime({
         targets: page,
-        opacity: [0, 1],
         translateY: [8, 0],
         duration: 900,
         easing: "easeOutCubic",
