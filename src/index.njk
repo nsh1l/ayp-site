@@ -73,7 +73,7 @@ Soichiro "So1loh" Nitta
       </div>
 
       <!-- Main grid -->
-      <div class="grid gap-6 grid-cols-3">
+      <div class="grid gap-6 grid-cols-2 md:grid-cols-3">
         {% for release in on_am %}
           <div class="rounded-2xl overflow-hidden border border-slate-100 bg-white shadow-soft">
             {% if release.image %}
@@ -86,7 +86,7 @@ Soichiro "So1loh" Nitta
                 <p class="text-sm font-medium text-slate-400 text-center">{{ release.title }}</p>
               </div>
             {% endif %}
-            <div class="p-3 flex justify-center gap-2">
+            <div class="p-1 flex justify-center gap-2">
               {% if release.bandcamp %}
                 <a href="{{ release.bandcamp }}" target="_blank" rel="noopener noreferrer"
                    class="flex h-8 w-8 items-center justify-center rounded-full bg-purple-500/10 text-purple-700 hover:bg-purple-500/20"
@@ -130,7 +130,7 @@ Soichiro "So1loh" Nitta
               </svg>
               Other（{{ off_am | length }}）
             </summary>
-            <div class="mt-6 grid gap-6 grid-cols-3">
+            <div class="mt-6 grid gap-6 grid-cols-2 md:grid-cols-3">
               {% for release in off_am %}
                 <div class="rounded-2xl overflow-hidden border border-slate-100 bg-white shadow-soft">
                   {% if release.image %}
