@@ -112,18 +112,35 @@ Soichiro "So1loh" Nitta
 
       <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {% for release in discography.releases %}
-          {% if release.image %}
-            <a href="{{ release.url }}" target="_blank" rel="noopener noreferrer"
-               class="group block rounded-2xl overflow-hidden border border-slate-100 bg-white shadow-soft hover:shadow-xl transition-shadow">
+          <div class="rounded-2xl overflow-hidden border border-slate-100 bg-white shadow-soft">
+            {% if release.image %}
               <div class="aspect-square overflow-hidden bg-slate-100">
                 <img src="{{ release.image }}" alt="{{ release.title }}" loading="lazy"
-                     class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                     class="h-full w-full object-cover" />
               </div>
-              <div class="p-3">
-                <p class="text-sm font-semibold text-navy truncate">{{ release.title }}</p>
+            {% else %}
+              <div class="aspect-square bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center p-4">
+                <p class="text-sm font-medium text-slate-400 text-center">{{ release.title }}</p>
               </div>
-            </a>
-          {% endif %}
+            {% endif %}
+            <div class="p-3 space-y-2">
+              <p class="text-sm font-semibold text-navy truncate">{{ release.title }}</p>
+              <div class="flex flex-wrap gap-1.5">
+                {% if release.bandcamp %}
+                  <a href="{{ release.bandcamp }}" target="_blank" rel="noopener noreferrer"
+                     class="inline-flex items-center gap-1 rounded-full bg-purple-500/10 px-2.5 py-1 text-xs font-medium text-purple-700 hover:bg-purple-500/20">
+                    Bandcamp
+                  </a>
+                {% endif %}
+                {% if release.apple_music %}
+                  <a href="{{ release.apple_music }}" target="_blank" rel="noopener noreferrer"
+                     class="inline-flex items-center gap-1 rounded-full bg-blue-500/10 px-2.5 py-1 text-xs font-medium text-blue-700 hover:bg-blue-500/20">
+                    Apple Music
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
         {% endfor %}
       </div>
 
