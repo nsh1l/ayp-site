@@ -1,12 +1,7 @@
 {
   "title": "Always Yesterday Party",
-  "description": "Always Yesterday Party（AYP）公式コーポレートサイト。プロジェクト、理念、ディスコグラフィを紹介します。",
+  "description": "Always Yesterday Party（AYP）公式サイト。",
   "nav": [
-    { "label": "Home", "url": "/" },
-    { "label": "About", "url": "/about/" },
-    { "label": "Projects", "url": "/projects/" },
-    { "label": "Discography", "url": "/discography/" },
-    { "label": "Contact", "url": "/contact/" },
-    { "label": "Privacy", "url": "/privacy/" }
+    { "label": "Home", "url": "/" }
   ]
 }

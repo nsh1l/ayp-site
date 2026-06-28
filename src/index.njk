@@ -1,10 +1,11 @@
 ---
 layout: base.njk
 title: "Always Yesterday Party"
-description: "Always Yesterday Party（AYP）公式コーポレートサイト。プロジェクト情報・理念・ディスコグラフィを掲載しています。"
+description: "Always Yesterday Party（AYP）公式LP。ステートメント、ディスコグラフィ、お問い合わせ。"
 permalink: /
 ---
 <main>
+  <!-- Hero -->
   <section class="relative overflow-hidden">
     <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/60 to-white/70"></div>
     <div aria-hidden="true" class="absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-orange/25 blur-3xl"></div>
@@ -22,26 +23,12 @@ permalink: /
             ひとつの“企業の仕組み”として届けます。
           </p>
           <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="/projects/" class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-navy shadow-soft hover:opacity-95">
-              事業を見る
-            </a>
-            <a href="/about/" class="inline-flex items-center justify-center rounded-full border border-white/40 bg-white/10 px-6 py-3 text-sm font-semibold text-white hover:bg-white/15">
+            <a href="#statement" class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-navy shadow-soft hover:opacity-95">
               理念を読む
             </a>
-          </div>
-          <div class="mt-8 grid gap-3 sm:grid-cols-3">
-            <div class="rounded-2xl bg-white/80 p-4 glass shadow-soft">
-              <div class="text-xs font-semibold text-grayish">Focus</div>
-              <div class="mt-1 text-sm font-bold text-navy">企画〜運用</div>
-            </div>
-            <div class="rounded-2xl bg-white/80 p-4 glass shadow-soft">
-              <div class="text-xs font-semibold text-grayish">Mode</div>
-              <div class="mt-1 text-sm font-bold text-navy">静的・速い体験</div>
-            </div>
-            <div class="rounded-2xl bg-white/80 p-4 glass shadow-soft">
-              <div class="text-xs font-semibold text-grayish">Outcome</div>
-              <div class="mt-1 text-sm font-bold text-navy">分かりやすい情報</div>
-            </div>
+            <a href="#discography" class="inline-flex items-center justify-center rounded-full border border-white/40 bg-white/10 px-6 py-3 text-sm font-semibold text-white hover:bg-white/15">
+              作品を見る
+            </a>
           </div>
         </div>
 
@@ -57,123 +44,186 @@ permalink: /
             <div class="mt-4 space-y-3">
               <article class="rounded-2xl border border-slate-200 bg-white p-4">
                 <div class="text-xs font-semibold text-grayish">2026-06</div>
-                <h3 class="mt-1 text-sm font-bold text-navy">公開準備中</h3>
-                <p class="mt-1 text-sm leading-relaxed text-slate-700">事業情報・導入の考え方・ブランドガイドを順次反映します。</p>
+                <h3 class="mt-1 text-sm font-bold text-navy">LP 公開</h3>
+                <p class="mt-1 text-sm leading-relaxed text-slate-700">サイトを1ページLPに再構成。ステートメント・ディスコグラフィを統合。</p>
               </article>
               <article class="rounded-2xl border border-slate-200 bg-white p-4">
-                <div class="text-xs font-semibold text-grayish">About</div>
-                <h3 class="mt-1 text-sm font-bold text-navy">AYPの“接続”を言語化</h3>
-                <p class="mt-1 text-sm leading-relaxed text-slate-700">人・モノ・情報をつなげる設計思想を、ページに落とし込みます。</p>
+                <div class="text-xs font-semibold text-grayish">Statement</div>
+                <h3 class="mt-1 text-sm font-bold text-navy">AYPの理念と言葉</h3>
+                <p class="mt-1 text-sm leading-relaxed text-slate-700">"ほっとけない"を原動力に。全文を下で公開しています。</p>
               </article>
             </div>
-            <div class="mt-5 rounded-2xl bg-slate-50 p-4">
-              <div class="text-xs font-semibold text-grayish">お問い合わせ</div>
-              <p class="mt-1 text-sm font-medium text-slate-800">プロジェクト相談はフォームから。</p>
-              <a href="/contact/" class="mt-3 inline-flex w-full items-center justify-center rounded-full bg-orange px-4 py-2 text-sm font-semibold text-white hover:opacity-95">
-                フォームへ
-              </a>
-            </div>
-          </div>
-          <div class="mt-4 text-center text-xs text-white/70">
-            <span class="inline-block rounded-full bg-black/10 px-3 py-1">Static HTML • Fast</span>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="mx-auto max-w-6xl px-4 py-12">
+  <!-- Statement -->
+  <section id="statement" class="relative overflow-hidden">
+    <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-navy to-white"></div>
+    <div class="relative mx-auto max-w-6xl px-4 py-14 sm:py-20">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-xs font-semibold text-navy shadow-soft">
+          <span class="inline-block h-2 w-2 rounded-full bg-orange" aria-hidden="true"></span>
+          AYP Statement
+        </div>
+        <h2 class="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl">ALWAYS YESTERDAY PARTY</h2>
+        <p class="mt-4 text-base leading-relaxed text-white/90">
+          今日の違和感を、今日のまま"ほっとけない"ために。
+          過去の解像度を上げ、未来の意思決定に活かす——そのためのステートメントです。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-12">
+    <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+      <div>
+        <h2 class="text-2xl font-bold text-navy">理念のポイント</h2>
+        <p class="mt-2 text-slate-700">全文に入るまえに、要点を短くまとめたアプローチです。</p>
+      </div>
+    </div>
+    <div class="mt-8 grid gap-4 md:grid-cols-3">
+      <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
+        <div class="text-xs font-semibold text-grayish">01</div>
+        <h3 class="mt-2 text-lg font-bold text-navy">過ぎ去るから、見直せる</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-700">すべては時間とともに形を変えます。いまを更新可能にするべく取り組みます。</p>
+      </div>
+      <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
+        <div class="text-xs font-semibold text-grayish">02</div>
+        <h3 class="mt-2 text-lg font-bold text-navy">無視は軽く、でも遠ざかる</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-700">見ないことが楽を生むとしても、関係性や学びの機会を手放したくない。</p>
+      </div>
+      <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
+        <div class="text-xs font-semibold text-grayish">03</div>
+        <h3 class="mt-2 text-lg font-bold text-navy">"ほっとけない"は行動の入口</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-700">違和感を言語化し、関係者として立ち上がる姿勢を企業活動へと昇華させます。</p>
+      </div>
+    </div>
+
+    <div class="mt-10 rounded-3xl border border-slate-200 bg-white p-6 shadow-soft sm:p-10">
+      <div class="text-xs font-semibold text-grayish">Statement（全文）</div>
+      <div class="mt-4 whitespace-pre-wrap text-sm leading-relaxed text-slate-800">
+ALWAYS YESTERDAY PARTY
+常に物事は過ぎ去る。
+今日あったものはいずれ昨日のものになる。
+
+常日頃起きることを無視すれば自分は生きやすいし、誰かを気にかけて生きることほど負担をかけることはない。
+‘’’
+これは私が観た夢の中。
+私はまた、大人たちの起こした不祥事や私たちに対しての不当な扱いを受け入れ、諦め生きようとしていた。
+しかし、話を無理くりに締めようと大人たちがした途端、おかしいことはおかしいと、「ほっとけない」人たちは割り込み叫んでいた。
+私が受けてきたいじめのようなもの、明らかに不当な格差、扱いの違いに声を上げる夢の中の住人たち。
+目が覚め起きた時、不思議なほどに充足感があった。
+この感覚を忘れずに生きていきたい。
+彼らは「ALWAYS YESTERDAY PARTY」というのぼりを掲げていた。
+‘’’
+常日頃起きること、無視すればいいものを、
+ほっとけない、おかしい、と露わにする。
+それが私たちと、彼らのモットー。
+気づかせてくれた彼らに感謝と尊敬を。
+ALWAYS YESTERDAY PARTY
+Soichiro "So1loh" Nitta
+      </div>
+    </div>
+  </section>
+
+  <!-- Discography -->
+  <section id="discography" class="relative overflow-hidden bg-gradient-to-b from-white to-slate-50">
+    <div class="mx-auto max-w-6xl px-4 py-14 sm:py-20">
       <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
         <div>
-          <h2 class="text-2xl font-bold text-navy">AYPが提供する価値</h2>
-          <p class="mt-2 text-slate-700">企業向けの情報発信・企画・運用を、最短で形にします。</p>
+          <div class="inline-flex items-center gap-2 rounded-full bg-green-500/10 px-4 py-2 text-xs font-semibold text-green-700">
+            <span class="inline-block h-2 w-2 rounded-full bg-green-500"></span>
+            So1loh / Discography
+          </div>
+          <h2 class="mt-4 text-3xl font-bold text-navy sm:text-4xl">Discography</h2>
+          <p class="mt-2 text-slate-700">Soichiro "So1loh" Nitta の全リリースを記録しています。</p>
         </div>
-        <a href="/projects/" class="text-sm font-semibold text-orange hover:opacity-90">詳しく見る →</a>
+        <a href="https://open.spotify.com/artist/6zgaYLHs2C1Kijp1JJzIMq" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full bg-green-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-green-600">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.52 17.34c-.24.36-.72.48-1.08.24-2.88-1.68-6.48-2.16-10.8-1.2-.42.12-.84-.12-.96-.54-.12-.42.12-.84.54-.96 4.68-1.08 8.64-.48 11.88 1.44.36.24.48.72.24 1.08zm1.44-3.24c-.3.42-.84.6-1.26.3-3.24-1.92-8.16-2.52-12-1.44-.48.12-1.02-.18-1.14-.66-.12-.48.18-1.02.66-1.14 4.44-1.2 9.72-.48 13.44 1.68.42.24.6.84.3 1.26zm.12-3.42c-3.84-2.28-10.2-2.52-13.8-1.38-.54.18-1.14-.12-1.32-.66-.18-.54.12-1.14.66-1.32 4.2-1.32 11.16-1.08 15.48 1.5.48.3.66.96.36 1.44-.3.42-.96.6-1.38.36z"/></svg>
+          Open in Spotify
+        </a>
       </div>
-      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
-          <div class="inline-flex items-center justify-center rounded-2xl bg-navy/5 p-3">
-            <div class="h-6 w-6 rounded-full bg-orange" aria-hidden="true"></div>
-          </div>
-          <h3 class="mt-4 text-lg font-bold text-navy">コーポレート設計</h3>
-          <p class="mt-2 text-sm leading-relaxed text-slate-700">目的・対象・情報設計から導線まで。静的でも伝わる構造にします。</p>
-        </div>
-        <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
-          <div class="inline-flex items-center justify-center rounded-2xl bg-navy/5 p-3">
-            <div class="h-6 w-6 rounded-full bg-orange" aria-hidden="true"></div>
-          </div>
-          <h3 class="mt-4 text-lg font-bold text-navy">ブランド運用</h3>
-          <p class="mt-2 text-sm leading-relaxed text-slate-700">ロゴ・トーン・文章の統一。更新しやすいテンプレ構成で整えます。</p>
-        </div>
-        <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
-          <div class="inline-flex items-center justify-center rounded-2xl bg-navy/5 p-3">
-            <div class="h-6 w-6 rounded-full bg-orange" aria-hidden="true"></div>
-          </div>
-          <h3 class="mt-4 text-lg font-bold text-navy">高速な公開</h3>
-          <p class="mt-2 text-sm leading-relaxed text-slate-700">静的サイトなので軽量・高速。Cloudflare Pagesなどにそのまま載せられます。</p>
-        </div>
-      </div>
-    </section>
 
-    <section class="mx-auto max-w-6xl px-4 pb-4 pt-2">
-      <div class="flex items-end justify-between gap-4">
-        <div>
-          <h2 class="text-2xl font-bold text-navy">導入のプロセス</h2>
-          <p class="mt-2 text-slate-700">“考え”を、“見える体験”に変えるための流れです。</p>
-        </div>
-      </div>
-      <div class="mt-8 grid gap-4 md:grid-cols-4">
-        {% for step in range(1,5) %}
-          <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-soft">
-            <div class="text-sm font-semibold text-orange">Step {{ "0" ~ step }}</div>
-            <h3 class="mt-2 text-lg font-bold text-navy">{% if step == 1 %}ヒアリング{% elif step == 2 %}設計{% elif step == 3 %}実装{% else %}運用・改善{% endif %}</h3>
-            <p class="mt-2 text-sm leading-relaxed text-slate-700">
-              {% if step == 1 %}現状・課題・伝えたいことを整理します。{% elif step == 2 %}情報設計と導線、必要なページ構成を決めます。{% elif step == 3 %}静的で速い体験を、実際の画面として作ります。{% else %}文章・更新導線を整え、継続しやすくします。{% endif %}
-            </p>
-          </div>
+      <div class="mt-10 grid gap-6">
+        {% for release in discography.releases %}
+          <article class="release-card rounded-3xl border border-slate-200 bg-white/80 glass shadow-soft overflow-hidden">
+            <div class="p-6 sm:p-8">
+              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                <div class="flex-1">
+                  <div class="flex items-center gap-2">
+                    <span class="rounded-full px-2.5 py-0.5 text-xs font-semibold {{ release.tagColor }}">{{ release.type }}</span>
+                    <span class="text-xs text-grayish">{{ release.year }}</span>
+                  </div>
+                  <h3 class="mt-2 text-xl font-bold text-navy">{{ release.title }}</h3>
+                  <p class="mt-1 text-sm text-slate-600">{{ release.description }}</p>
+                  {% if release.notes %}
+                    <p class="mt-1 text-xs text-grayish">{{ release.notes }}</p>
+                  {% endif %}
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    {% for platform in release.platforms %}
+                      <a href="{{ platform.url }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium {{ platform.color }} hover:opacity-90">
+                        {% if platform.icon == "spotify" %}
+                          <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.52 17.34c-.24.36-.72.48-1.08.24-2.88-1.68-6.48-2.16-10.8-1.2-.42.12-.84-.12-.96-.54-.12-.42.12-.84.54-.96 4.68-1.08 8.64-.48 11.88 1.44.36.24.48.72.24 1.08zm1.44-3.24c-.3.42-.84.6-1.26.3-3.24-1.92-8.16-2.52-12-1.44-.48.12-1.02-.18-1.14-.66-.12-.48.18-1.02.66-1.14 4.44-1.2 9.72-.48 13.44 1.68.42.24.6.84.3 1.26zm.12-3.42c-3.84-2.28-10.2-2.52-13.8-1.38-.54.18-1.14-.12-1.32-.66-.18-.54.12-1.14.66-1.32 4.2-1.32 11.16-1.08 15.48 1.5.48.3.66.96.36 1.44-.3.42-.96.6-1.38.36z"/></svg>
+                        {% elif platform.icon == "apple" %}
+                          <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M16.78 3.5c-.78.92-1.87 1.42-2.98 1.42-1.11.01-2.26-.54-3.04-1.36-.56-.58-1.12-1.5-.8-2.35.74-2.04 2.94-2.06 4.02-2.06 1.06 0 2.14.71 2.56 1.94-.01.01-.15.91-.56 1.76zm2.34 9.18c-.01-2.76 1.53-4.4 1.63-4.49-1.92-2.8-4.85-2.93-5.91-2.98-2.5-.15-3.95 1.54-4.7 1.54-.75 0-2.38-1.5-3.91-1.46-1.95.04-3.75 1.48-4.75 3.76-2.05 4.5-.54 11.24 1.46 14.92.97 1.71 2.64 3.61 4.6 3.55 1.82-.05 2.5-1.14 4.7-1.14 2.2 0 2.79 1.14 4.69 1.11 1.93-.03 3.16-1.75 4.13-3.47 1.28-2.19 1.65-4.32 1.67-4.43-.03-.01-3.27-1.26-3.29-4.98z"/></svg>
+                        {% elif platform.icon == "bandcamp" %}
+                          <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M3.4 3.1C2.2 5 1.4 7.1 1 9.3c-.2 1.3-.1 2.7.3 4 .9 2.5 2.8 4.6 5.2 5.9 1.5.8 3.1 1.2 4.8 1.3 1.8.1 3.5-.2 5.2-.9 2.2-.9 4.1-2.6 5.3-4.7 1.1-1.9 1.5-4.1 1.2-6.3-.3-2.1-1.3-4.1-2.9-5.6C18 1.5 15.5.5 13 .4c-1.6 0-3.2.3-4.7.9-1.9.7-3.5 1.9-4.9 3.4zm2.6 5.7c.3-.1.5-.1.8 0l3.8.9c.2.1.4.2.5.4l2.5 3.9c.1.2.3.3.5.3l3.5-.2c.3 0 .6.2.7.5.1.3-.1.6-.4.7l-5.2 1.4c-.2.1-.5 0-.7-.2l-3.4-4c-.1-.2-.3-.3-.5-.3l-2.5.4c-.3 0-.6-.2-.7-.5-.1-.3.1-.6.4-.7l3.5-1.6z"/></svg>
+                        {% endif %}
+                        {{ platform.name }}
+                      </a>
+                    {% endfor %}
+                    {% if release.tracklist %}
+                      <button class="tracklist-toggle text-sm font-medium text-orange" aria-expanded="false">Tracklist</button>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              {% if release.tracklist %}
+                <div class="tracklist-body mt-4 border-t border-slate-200 pt-4">
+                  <table class="w-full text-sm">
+                    <thead>
+                      <tr class="text-xs text-grayish">
+                        <th class="w-8 text-left font-medium">#</th>
+                        <th class="text-left font-medium">Title</th>
+                        <th class="w-16 text-right font-medium">Duration</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for track in release.tracklist %}
+                        <tr class="border-t border-slate-100">
+                          <td class="py-2 text-grayish">{{ loop.index }}</td>
+                          <td class="py-2 font-medium text-slate-800">{{ track.title }}</td>
+                          <td class="py-2 text-right text-grayish">{{ track.duration or "—" }}</td>
+                        </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              {% endif %}
+            </div>
+          </article>
         {% endfor %}
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="mx-auto max-w-6xl px-4 py-10">
-      <div class="rounded-3xl bg-slate-50 p-7">
-        <div class="grid gap-6 lg:grid-cols-12 lg:items-center">
-          <div class="lg:col-span-8">
-            <h2 class="text-2xl font-bold text-navy">事業領域（現在の準備状況）</h2>
-            <p class="mt-2 text-slate-700">詳細はページに分けて順次公開します。まずは全体像をご覧ください。</p>
-          </div>
-          <div class="lg:col-span-4 flex flex-col sm:flex-row gap-3">
-            <a href="/projects/" class="inline-flex items-center justify-center rounded-full bg-orange px-6 py-3 text-sm font-semibold text-white hover:opacity-95">事業を見る</a>
-            <a href="/about/" class="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-navy hover:bg-slate-50">理念へ</a>
-          </div>
+  <!-- CTA -->
+  <section class="mx-auto max-w-6xl px-4 pb-16">
+    <div class="rounded-3xl bg-navy p-8 text-white shadow-soft">
+      <div class="grid gap-6 md:grid-cols-12 md:items-center">
+        <div class="md:col-span-8">
+          <h2 class="text-2xl font-bold">まずは一度、相談してみませんか？</h2>
+          <p class="mt-2 text-white/85">要件が固まっていなくてもOK。現状を聞かせてください。</p>
         </div>
-        <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <div class="rounded-2xl bg-white p-5 shadow-soft">
-            <div class="text-xs font-semibold text-grayish">Content</div>
-            <div class="mt-2 text-sm font-bold text-navy">情報発信設計</div>
-          </div>
-          <div class="rounded-2xl bg-white p-5 shadow-soft">
-            <div class="text-xs font-semibold text-grayish">Digital</div>
-            <div class="mt-2 text-sm font-bold text-navy">Web体験の最適化</div>
-          </div>
-          <div class="rounded-2xl bg-white p-5 shadow-soft">
-            <div class="text-xs font-semibold text-grayish">Brand</div>
-            <div class="mt-2 text-sm font-bold text-navy">ブランド運用の設計</div>
-          </div>
+        <div class="md:col-span-4">
+          <a href="/contact/" class="inline-flex w-full items-center justify-center rounded-full bg-orange px-6 py-3 text-sm font-semibold text-white hover:opacity-95">
+            お問い合わせ
+          </a>
         </div>
       </div>
-    </section>
-
-    <section class="mx-auto max-w-6xl px-4 pb-16">
-      <div class="rounded-3xl bg-navy p-8 text-white shadow-soft">
-        <div class="grid gap-6 md:grid-cols-12 md:items-center">
-          <div class="md:col-span-8">
-            <h2 class="text-2xl font-bold">まずは一度、相談してみませんか？</h2>
-            <p class="mt-2 text-white/85">要件が固まっていなくてもOK。現状を聞かせてください。</p>
-          </div>
-          <div class="md:col-span-4">
-            <a href="/contact/" class="inline-flex w-full items-center justify-center rounded-full bg-orange px-6 py-3 text-sm font-semibold text-white hover:opacity-95">お問い合わせ</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+    </div>
+  </section>
+</main>

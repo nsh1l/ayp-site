@@ -135,6 +135,13 @@
         position: relative;
         z-index: 10;
       }
+
+      .tracklist-body {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+      .tracklist-body.open { max-height: 2000px; }
     </style>
   </head>
   <body class="bg-transparent text-slate-900">
