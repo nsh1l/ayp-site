@@ -66,14 +66,14 @@ Soichiro "So1loh" Nitta
   {% set off_am = discography.releases | rejectattr("apple_music") | list %}
 
   <section id="discography" class="bg-white">
-    <div class="mx-auto max-w-6xl px-4 py-14 sm:py-20">
+    <div class="mx-auto max-w-6xl px-6 py-14 sm:py-20">
       <div class="text-center mb-12">
         <span class="inline-block h-2 w-2 rounded-full bg-green-500 mb-4" aria-hidden="true"></span>
         <h2 class="text-3xl sm:text-4xl font-bold text-navy">Discography</h2>
       </div>
 
       <!-- Main grid -->
-      <div class="grid gap-6 grid-cols-1 md:grid-cols-3">
+      <div class="grid gap-6 grid-cols-3">
         {% for release in on_am %}
           <div class="rounded-2xl overflow-hidden border border-slate-100 bg-white shadow-soft">
             {% if release.image %}
@@ -130,7 +130,7 @@ Soichiro "So1loh" Nitta
               </svg>
               Other（{{ off_am | length }}）
             </summary>
-            <div class="mt-6 grid gap-6 grid-cols-1 md:grid-cols-3">
+            <div class="mt-6 grid gap-6 grid-cols-3">
               {% for release in off_am %}
                 <div class="rounded-2xl overflow-hidden border border-slate-100 bg-white shadow-soft">
                   {% if release.image %}
