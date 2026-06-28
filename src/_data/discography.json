@@ -1,23 +1,8 @@
 {
   "releases": [
     {
-      "title": "21",
-      "image": "https://f4.bcbits.com/img/a1424498652_7.jpg",
-      "bandcamp": "https://so1loh.bandcamp.com/album/21",
-      "apple_music": "https://music.apple.com/jp/album/21/1593700807",
-      "spotify": "https://open.spotify.com/album/2uP8G4yaGojlt5PCLGDFtr",
-      "youtube_music": "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ"
-    },
-    {
-      "title": "212",
-      "image": "https://f4.bcbits.com/img/a2386307103_7.jpg",
-      "bandcamp": "https://so1loh.bandcamp.com/album/212-2",
-      "apple_music": "https://music.apple.com/jp/album/212/1772748925",
-      "spotify": "https://open.spotify.com/album/2OHIOJBEYnKUa04u4AQG40",
-      "youtube_music": "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ"
-    },
-    {
       "title": "5 Hours 10 minutes",
+      "date": "2026-05-10",
       "image": null,
       "bandcamp": null,
       "apple_music": "https://music.apple.com/jp/album/5-hours-10-minutes-single/6770366917",
@@ -25,15 +10,53 @@
       "youtube_music": "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ"
     },
     {
-      "title": "Archives 2017-2019",
-      "image": "https://f4.bcbits.com/img/a1005283129_7.jpg",
-      "bandcamp": "https://so1loh.bandcamp.com/album/archives-2017-2019",
-      "apple_music": null,
-      "spotify": null,
+      "title": "void 2",
+      "date": "2025-11-03",
+      "image": null,
+      "bandcamp": null,
+      "apple_music": "https://music.apple.com/jp/album/void-2-ep/1847937742",
+      "spotify": "https://open.spotify.com/album/0WqlAQowMkyX23dBCvaSWY",
+      "youtube_music": "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ"
+    },
+    {
+      "title": "void",
+      "date": "2025-07-04",
+      "image": "https://f4.bcbits.com/img/a0079026869_7.jpg",
+      "bandcamp": "https://so1loh.bandcamp.com/album/void",
+      "apple_music": "https://music.apple.com/jp/album/void-ep/1822812315",
+      "spotify": "https://open.spotify.com/album/6y0399JO3WVy2XBVRu4VGP",
+      "youtube_music": "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ"
+    },
+    {
+      "title": "212",
+      "date": "2024-10-25",
+      "image": "https://f4.bcbits.com/img/a2386307103_7.jpg",
+      "bandcamp": "https://so1loh.bandcamp.com/album/212-2",
+      "apple_music": "https://music.apple.com/jp/album/212/1772748925",
+      "spotify": "https://open.spotify.com/album/2OHIOJBEYnKUa04u4AQG40",
+      "youtube_music": "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ"
+    },
+    {
+      "title": "帰省 2",
+      "date": "2024-02-20",
+      "image": "https://f4.bcbits.com/img/a0639628299_7.jpg",
+      "bandcamp": "https://so1loh.bandcamp.com/album/2",
+      "apple_music": "https://music.apple.com/jp/album/%E5%B8%B0%E7%9C%81-2/1732568867",
+      "spotify": "https://open.spotify.com/album/4SOal58BL7dWeLNXk1mXhP",
+      "youtube_music": "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ"
+    },
+    {
+      "title": "帰省",
+      "date": "2023-08-01",
+      "image": "https://f4.bcbits.com/img/a1118593794_7.jpg",
+      "bandcamp": "https://so1loh.bandcamp.com/album/--2",
+      "apple_music": "https://music.apple.com/jp/album/%E5%B8%B0%E7%9C%81-ep/1699076834",
+      "spotify": "https://open.spotify.com/album/2vTFz6pEkGoTbaRisVZCgy",
       "youtube_music": "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ"
     },
     {
       "title": "Beats510",
+      "date": "2023-05-10",
       "image": "https://f4.bcbits.com/img/a0500379517_7.jpg",
       "bandcamp": "https://so1loh.bandcamp.com/album/beats510",
       "apple_music": "https://music.apple.com/jp/album/beats510/6769124681",
@@ -42,6 +65,7 @@
     },
     {
       "title": "Internet Tape: 2",
+      "date": "2022-04-19",
       "image": "https://f4.bcbits.com/img/a3607248671_7.jpg",
       "bandcamp": "https://so1loh.bandcamp.com/album/internet-tape-2",
       "apple_music": "https://music.apple.com/jp/album/internet-tape-2/1620409468",
@@ -49,15 +73,8 @@
       "youtube_music": "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ"
     },
     {
-      "title": "KISS OF LIFE - Sugercoat (So1loh Edit / Chuckii Flava Mashup)",
-      "image": "https://f4.bcbits.com/img/a2105841254_7.jpg",
-      "bandcamp": "https://so1loh.bandcamp.com/track/kiss-of-life-sugercoat-so1loh-edit-chuckii-flava-mashup",
-      "apple_music": null,
-      "spotify": null,
-      "youtube_music": "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ"
-    },
-    {
       "title": "Natto",
+      "date": "2021-09-06",
       "image": "https://f4.bcbits.com/img/a1274254525_7.jpg",
       "bandcamp": "https://so1loh.bandcamp.com/track/natto",
       "apple_music": "https://music.apple.com/jp/album/natto-feat-%E4%BA%8C%E9%9A%8E%E5%A0%82-%E8%93%89-single/1592107292",
@@ -65,7 +82,17 @@
       "youtube_music": "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ"
     },
     {
+      "title": "21",
+      "date": "2021-02-12",
+      "image": "https://f4.bcbits.com/img/a1424498652_7.jpg",
+      "bandcamp": "https://so1loh.bandcamp.com/album/21",
+      "apple_music": "https://music.apple.com/jp/album/21/1593700807",
+      "spotify": "https://open.spotify.com/album/2uP8G4yaGojlt5PCLGDFtr",
+      "youtube_music": "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ"
+    },
+    {
       "title": "September 14",
+      "date": "2020-12-22",
       "image": null,
       "bandcamp": null,
       "apple_music": "https://music.apple.com/jp/album/september-14-single/1592093253",
@@ -73,35 +100,21 @@
       "youtube_music": "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ"
     },
     {
-      "title": "void",
-      "image": "https://f4.bcbits.com/img/a0079026869_7.jpg",
-      "bandcamp": "https://so1loh.bandcamp.com/album/void",
-      "apple_music": "https://music.apple.com/jp/album/void-ep/1822812315",
-      "spotify": "https://open.spotify.com/album/6y0399JO3WVy2XBVRu4VGP",
+      "title": "KISS OF LIFE - Sugercoat (So1loh Edit / Chuckii Flava Mashup)",
+      "date": null,
+      "image": "https://f4.bcbits.com/img/a2105841254_7.jpg",
+      "bandcamp": "https://so1loh.bandcamp.com/track/kiss-of-life-sugercoat-so1loh-edit-chuckii-flava-mashup",
+      "apple_music": null,
+      "spotify": null,
       "youtube_music": "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ"
     },
     {
-      "title": "void 2",
-      "image": null,
-      "bandcamp": null,
-      "apple_music": "https://music.apple.com/jp/album/void-2-ep/1847937742",
-      "spotify": "https://open.spotify.com/album/0WqlAQowMkyX23dBCvaSWY",
-      "youtube_music": "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ"
-    },
-    {
-      "title": "帰省",
-      "image": "https://f4.bcbits.com/img/a1118593794_7.jpg",
-      "bandcamp": "https://so1loh.bandcamp.com/album/--2",
-      "apple_music": "https://music.apple.com/jp/album/%E5%B8%B0%E7%9C%81-ep/1699076834",
-      "spotify": "https://open.spotify.com/album/2vTFz6pEkGoTbaRisVZCgy",
-      "youtube_music": "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ"
-    },
-    {
-      "title": "帰省 2",
-      "image": "https://f4.bcbits.com/img/a0639628299_7.jpg",
-      "bandcamp": "https://so1loh.bandcamp.com/album/2",
-      "apple_music": "https://music.apple.com/jp/album/%E5%B8%B0%E7%9C%81-2/1732568867",
-      "spotify": "https://open.spotify.com/album/4SOal58BL7dWeLNXk1mXhP",
+      "title": "Archives 2017-2019",
+      "date": null,
+      "image": "https://f4.bcbits.com/img/a1005283129_7.jpg",
+      "bandcamp": "https://so1loh.bandcamp.com/album/archives-2017-2019",
+      "apple_music": null,
+      "spotify": null,
       "youtube_music": "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ"
     }
   ]

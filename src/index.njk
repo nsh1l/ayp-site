@@ -35,7 +35,7 @@ permalink: /
     </div>
   </section>
 
-  <!-- Statement -->
+  <!-- Statement（全文のみ） -->
   <section id="statement" class="relative overflow-hidden">
     <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-navy to-white"></div>
     <div class="relative mx-auto max-w-6xl px-4 py-14 sm:py-20">
@@ -44,37 +44,13 @@ permalink: /
           <span class="inline-block h-2 w-2 rounded-full bg-orange" aria-hidden="true"></span>
           AYP Statement
         </div>
-        <h2 class="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl">ALWAYS YESTERDAY PARTY</h2>
-        <p class="mt-4 text-base leading-relaxed text-white/90">
-          今日の違和感を、今日のまま"ほっとけない"ために。
-          過去の解像度を上げ、未来の意思決定に活かす——そのためのステートメントです。
-        </p>
       </div>
     </div>
   </section>
 
   <section class="mx-auto max-w-6xl px-4 py-12">
-    <div class="grid gap-4 md:grid-cols-3">
-      <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
-        <div class="text-xs font-semibold text-grayish">01</div>
-        <h3 class="mt-2 text-lg font-bold text-navy">過ぎ去るから、見直せる</h3>
-        <p class="mt-2 text-sm leading-relaxed text-slate-700">すべては時間とともに形を変えます。いまを更新可能にする。</p>
-      </div>
-      <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
-        <div class="text-xs font-semibold text-grayish">02</div>
-        <h3 class="mt-2 text-lg font-bold text-navy">無視は軽く、でも遠ざかる</h3>
-        <p class="mt-2 text-sm leading-relaxed text-slate-700">見ないことが楽を生むとしても、学びの機会は手放さない。</p>
-      </div>
-      <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
-        <div class="text-xs font-semibold text-grayish">03</div>
-        <h3 class="mt-2 text-lg font-bold text-navy">"ほっとけない"は行動の入口</h3>
-        <p class="mt-2 text-sm leading-relaxed text-slate-700">違和感を言語化し、関係者として立ち上がる。</p>
-      </div>
-    </div>
-
-    <div class="mt-10 rounded-3xl border border-slate-200 bg-white p-6 shadow-soft sm:p-10">
-      <div class="text-xs font-semibold text-grayish">Statement（全文）</div>
-      <div class="mt-4 whitespace-pre-wrap text-sm leading-relaxed text-slate-800">
+    <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft sm:p-10">
+      <div class="whitespace-pre-wrap text-sm leading-relaxed text-slate-800">
 ALWAYS YESTERDAY PARTY
 常に物事は過ぎ去る。
 今日あったものはいずれ昨日のものになる。
@@ -100,6 +76,9 @@ Soichiro "So1loh" Nitta
   </section>
 
   <!-- Discography -->
+  {% set on_am = discography.releases | selectattr("apple_music") | list %}
+  {% set off_am = discography.releases | rejectattr("apple_music") | list %}
+
   <section id="discography" class="bg-white">
     <div class="mx-auto max-w-6xl px-4 py-14 sm:py-20">
       <div class="text-center mb-12">
@@ -110,8 +89,9 @@ Soichiro "So1loh" Nitta
         <h2 class="text-3xl sm:text-4xl font-bold text-navy">Discography</h2>
       </div>
 
-      <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {% for release in discography.releases %}
+      <!-- Main grid: 3 columns, AM releases only -->
+      <div class="grid gap-6 grid-cols-1 md:grid-cols-3">
+        {% for release in on_am %}
           <div class="rounded-2xl overflow-hidden border border-slate-100 bg-white shadow-soft">
             {% if release.image %}
               <div class="aspect-square overflow-hidden bg-slate-100">
@@ -155,6 +135,53 @@ Soichiro "So1loh" Nitta
           </div>
         {% endfor %}
       </div>
+
+      <!-- Other releases toggle (no Apple Music) -->
+      {% if off_am | length > 0 %}
+        <div class="mt-10 text-center">
+          <details class="group inline-block text-left">
+            <summary class="inline-flex items-center gap-2 cursor-pointer rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-navy hover:bg-slate-50 list-none">
+              <svg class="h-4 w-4 transition-transform group-open:rotate-90" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/>
+              </svg>
+              その他のリリース（{{ off_am | length }}）
+            </summary>
+            <div class="mt-6 grid gap-6 grid-cols-1 md:grid-cols-3">
+              {% for release in off_am %}
+                <div class="rounded-2xl overflow-hidden border border-slate-100 bg-white shadow-soft">
+                  {% if release.image %}
+                    <div class="aspect-square overflow-hidden bg-slate-100">
+                      <img src="{{ release.image }}" alt="{{ release.title }}" loading="lazy"
+                           class="h-full w-full object-cover" />
+                    </div>
+                  {% else %}
+                    <div class="aspect-square bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center p-4">
+                      <p class="text-sm font-medium text-slate-400 text-center">{{ release.title }}</p>
+                    </div>
+                  {% endif %}
+                  <div class="p-3 space-y-2">
+                    <p class="text-sm font-semibold text-navy truncate">{{ release.title }}</p>
+                    <div class="flex flex-wrap gap-1.5">
+                      {% if release.bandcamp %}
+                        <a href="{{ release.bandcamp }}" target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-medium bg-purple-500/10 text-purple-700 hover:bg-purple-500/20">
+                          Bandcamp
+                        </a>
+                      {% endif %}
+                      {% if release.youtube_music %}
+                        <a href="{{ release.youtube_music }}" target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-medium bg-red-500/10 text-red-700 hover:bg-red-500/20">
+                          YouTube
+                        </a>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </details>
+        </div>
+      {% endif %}
 
       <div class="text-center mt-10">
         <a href="https://so1loh.bandcamp.com" target="_blank" rel="noopener noreferrer"

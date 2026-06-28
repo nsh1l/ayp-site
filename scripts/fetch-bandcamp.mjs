@@ -1,4 +1,4 @@
-// ponytail: scrapes Bandcamp + Apple Music + Spotify (+ YouTube Music search), merges
+// ponytail: scrapes Bandcamp + Apple Music + Spotify, merges by title, sorts newest first
 const BC_BASE = "https://so1loh.bandcamp.com";
 const AM_ID = 1585251019;
 
@@ -43,7 +43,10 @@ const amItems = {};
 for (const r of amData.results) {
   if (r.wrapperType !== "collection") continue;
   const url = r.collectionViewUrl.replace("?uo=4", "").replace("/us/", "/jp/");
-  amItems[r.collectionName] = url;
+  amItems[r.collectionName] = {
+    url,
+    releaseDate: r.releaseDate ? r.releaseDate.split("T")[0] : null,
+  };
 }
 
 // ── Merge ─────────────────────────────────────────────
@@ -56,49 +59,65 @@ for (const [t, id] of Object.entries(SPOTIFY_MAP)) {
   spByTitle[t.toLowerCase()] = `https://open.spotify.com/album/${id}`;
 }
 
-// YouTube Music channel (auto-generated, has all releases)
 const YT_CHANNEL = "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ";
+
+// Try to scrape BC dates for BC-only items
+async function fetchBcDate(url) {
+  try {
+    const html = await fetch(url).then(r => r.text());
+    const m = html.match(/<meta itemprop="datePublished" content="([^"]+)"/);
+    return m ? m[1] : null;
+  } catch { return null; }
+}
 
 const releases = [];
 const usedAm = new Set();
 
 for (const bc of bcItems) {
   const n = bcNorm(bc.title);
-  let amUrl = null;
-  for (const [amTitle, url] of Object.entries(amItems)) {
+  let amInfo = null;
+  for (const [amTitle, info] of Object.entries(amItems)) {
     if (amNorm(amTitle) === n || stripSuffix(amTitle).toLowerCase() === n) {
-      amUrl = url;
+      amInfo = info;
       usedAm.add(amTitle);
       break;
     }
   }
+  const date = amInfo ? amInfo.releaseDate : await fetchBcDate(bc.url);
   releases.push({
     title: bc.title,
+    date: date || null,
     image: bc.image,
     bandcamp: bc.url,
-    apple_music: amUrl,
+    apple_music: amInfo ? amInfo.url : null,
     spotify: spByTitle[n] || null,
     youtube_music: YT_CHANNEL,
   });
 }
 
 // Apple Music-only
-for (const [amTitle, url] of Object.entries(amItems)) {
+for (const [amTitle, info] of Object.entries(amItems)) {
   if (usedAm.has(amTitle)) continue;
   const stripped = stripSuffix(amTitle);
   const n = stripped.toLowerCase();
   releases.push({
     title: stripped,
+    date: info.releaseDate || null,
     image: null,
     bandcamp: null,
-    apple_music: url,
+    apple_music: info.url,
     spotify: spByTitle[n] || null,
     youtube_music: YT_CHANNEL,
   });
 }
 
-// Sort by title for consistent order
-releases.sort((a, b) => a.title.localeCompare(b.title, 'ja'));
+// Sort newest first (null dates → oldest)
+releases.sort((a, b) => {
+  if (!a.date && !b.date) return 0;
+  if (!a.date) return 1;
+  if (!b.date) return -1;
+  return b.date.localeCompare(a.date);
+});
 
 const outPath = new URL("../src/_data/discography.json", import.meta.url);
 await Bun.write(outPath, JSON.stringify({ releases }, null, 2));
