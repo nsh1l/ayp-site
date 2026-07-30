@@ -24,9 +24,23 @@ for (const href of requiredLinks) {
   if (!index.includes(`href=\"${href}\"`)) throw new Error(`missing homepage link: ${href}`);
 }
 
-// Verify loader video
+// Verify loader video — ponytail: preload=metadata saves 800KB on repeat visits
 if (!index.includes('id="loading-logo"')) throw new Error("missing loader video");
 if (!index.includes('autoplay')) throw new Error("missing autoplay on loader video");
+if (!index.includes('preload="metadata"')) throw new Error("expected preload=metadata on loader video");
+
+// OG meta & favicon
+if (!index.includes('property="og:image"')) throw new Error("missing og:image meta");
+if (!index.includes('property="og:title"')) throw new Error("missing og:title meta");
+if (!index.includes('name="twitter:card"')) throw new Error("missing twitter:card meta");
+if (!index.includes('rel="icon"')) throw new Error("missing favicon link");
+
+// Bandcamp button has text label (check in green CTA context, not just aria-label on icons)
+const bcBtn = index.match(/bg-green-600[\s\S]*?<\/a>/);
+if (!bcBtn || !bcBtn[0].includes('Bandcamp')) throw new Error("Bandcamp CTA button missing text label");
+
+// Placeholder card contrast improved
+if (index.includes('text-slate-400')) throw new Error("placeholder card still uses low-contrast slate-400");
 
 const { releases } = await Bun.file("src/_data/discography.json").json();
 const releasePages = releases.filter(release => release.release_page).map(release => release.release_page);
