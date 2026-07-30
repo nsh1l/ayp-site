@@ -1,5 +1,6 @@
 <script>
-  document.getElementById("year")?.textContent = new Date().getFullYear();
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   const loader = document.getElementById("loading-screen");
   const logoVideo = document.getElementById("loading-logo");
@@ -264,10 +265,13 @@
 
   if (shouldShowLoader && loader && logoVideo) {
     localStorage.setItem(LOADING_KEY, "1");
+
+    // ★ Top-level: safety timeout fires even if play() promise hangs (stuck pending)
+    const safetyTimeout = setTimeout(revealPage, 5000);
+
     logoVideo
       .play()
       .then(() => {
-        const safetyTimeout = setTimeout(revealPage, 5000);
         logoVideo.addEventListener("ended", () => {
           clearTimeout(safetyTimeout);
           revealPage();
@@ -278,11 +282,12 @@
         });
       })
       .catch(() => {
+        clearTimeout(safetyTimeout);
         setTimeout(revealPage, 600);
       });
   } else {
     // Inline reveal so heroEntrance runs inside page fade
-    if (page) {
+    if (page && window.anime) {
       anime({
         targets: page,
         translateY: [8, 0],
