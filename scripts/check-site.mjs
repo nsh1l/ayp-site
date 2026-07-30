@@ -29,6 +29,15 @@ if (!index.includes('id="loading-logo"')) throw new Error("missing loader video"
 if (!index.includes('autoplay')) throw new Error("missing autoplay on loader video");
 if (!index.includes('preload="metadata"')) throw new Error("expected preload=metadata on loader video");
 
+// Regression: separate classic scripts share the same global lexical scope.
+// A second top-level `const shouldShowLoader` prevents the footer script from parsing.
+if ((index.match(/const shouldShowLoader/g) || []).length !== 1) {
+  throw new Error("loader script redeclares shouldShowLoader");
+}
+if (!index.includes('window.AYP.shouldShowLoader === true')) {
+  throw new Error("loader script must read the bootstrap state from window.AYP");
+}
+
 // OG meta & favicon
 if (!index.includes('property="og:image"')) throw new Error("missing og:image meta");
 if (!index.includes('property="og:title"')) throw new Error("missing og:title meta");

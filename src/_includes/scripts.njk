@@ -6,7 +6,10 @@
   const logoVideo = document.getElementById("loading-logo");
   const page = document.getElementById("page-content");
   const LOADING_KEY = "aypLoadingShown";
-  const shouldShowLoader = document.documentElement.dataset.aypShowLoader === "1";
+  // `shouldShowLoader` is already a top-level const in base.njk. Reusing that
+  // name here is a parse-time SyntaxError, which prevents this whole script
+  // from running and leaves the loader visible.
+  const showLoader = window.AYP.shouldShowLoader === true;
 
   let revealed = false;
 
@@ -28,7 +31,7 @@
       loader.style.display = "none";
     }
 
-    if (page) {
+    if (page && window.anime) {
       anime({
         targets: page,
         translateY: [8, 0],
@@ -37,6 +40,11 @@
         begin: heroEntrance
       });
     }
+
+    setTimeout(() => {
+      setupAmbientParticles();
+      setupCardHover();
+    }, 300);
   }
 
   /* ─── HERO ENTRANCE ─── */
@@ -263,28 +271,22 @@
   initTracklistToggles();
   setupScrollAnimations();
 
-  if (shouldShowLoader && loader && logoVideo) {
+  if (showLoader && loader && logoVideo) {
     localStorage.setItem(LOADING_KEY, "1");
 
-    // ★ Top-level: safety timeout fires even if play() promise hangs (stuck pending)
+    // Safety timeout also covers a play() promise that never settles.
     const safetyTimeout = setTimeout(revealPage, 5000);
+    const finishLoading = () => {
+      clearTimeout(safetyTimeout);
+      revealPage();
+    };
 
-    logoVideo
-      .play()
-      .then(() => {
-        logoVideo.addEventListener("ended", () => {
-          clearTimeout(safetyTimeout);
-          revealPage();
-        });
-        logoVideo.addEventListener("error", () => {
-          clearTimeout(safetyTimeout);
-          revealPage();
-        });
-      })
-      .catch(() => {
-        clearTimeout(safetyTimeout);
-        setTimeout(revealPage, 600);
-      });
+    logoVideo.addEventListener("ended", finishLoading, { once: true });
+    logoVideo.addEventListener("error", finishLoading, { once: true });
+    logoVideo.play().catch(() => {
+      clearTimeout(safetyTimeout);
+      setTimeout(revealPage, 600);
+    });
   } else {
     // Inline reveal so heroEntrance runs inside page fade
     if (page && window.anime) {
@@ -302,14 +304,4 @@
     }
     if (loader) loader.style.display = "none";
   }
-
-  // When loader finishes (the revealPage path), call setup that needs page visible
-  const origReveal = revealPage;
-  revealPage = function() {
-    origReveal();
-    setTimeout(() => {
-      setupAmbientParticles();
-      setupCardHover();
-    }, 300);
-  };
 </script>
