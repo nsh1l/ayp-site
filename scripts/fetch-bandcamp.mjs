@@ -59,6 +59,16 @@ for (const [t, id] of Object.entries(SPOTIFY_MAP)) {
   spByTitle[t.toLowerCase()] = `https://open.spotify.com/album/${id}`;
 }
 
+async function fetchSpotifyArtwork(url) {
+  if (!url) return null;
+  try {
+    const { thumbnail_url } = await fetch(`https://open.spotify.com/oembed?url=${encodeURIComponent(url)}`).then(r => r.json());
+    return thumbnail_url || null;
+  } catch {
+    return null;
+  }
+}
+
 const YT_CHANNEL = "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ";
 
 // Try to scrape BC dates for BC-only items
@@ -103,7 +113,7 @@ for (const [amTitle, info] of Object.entries(amItems)) {
   releases.push({
     title: stripped,
     date: info.releaseDate || null,
-    image: null,
+    image: await fetchSpotifyArtwork(spByTitle[n]),
     bandcamp: null,
     apple_music: info.url,
     spotify: spByTitle[n] || null,
