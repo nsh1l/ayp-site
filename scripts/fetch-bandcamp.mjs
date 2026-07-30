@@ -71,7 +71,9 @@ async function fetchSpotifyArtwork(url) {
 
 const YT_CHANNEL = "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ";
 const VOID_SERIES_URL = "https://void.alwaysyesterday.party/";
-const voidSeries = title => /^void(?: \d+)?$/i.test(title) ? { void_series: VOID_SERIES_URL } : {};
+const voidSeries = title => /^void(?: \d+)?$/i.test(title)
+  ? { void_series: VOID_SERIES_URL, release_page: `/releases/${title.replace(" ", "-")}/` }
+  : {};
 
 // Try to scrape BC dates for BC-only items
 async function fetchBcDate(url) {

@@ -6,6 +6,7 @@
   "scripts": {
     "fetch": "bun run scripts/fetch-bandcamp.mjs",
     "build": "bun run fetch && eleventy --config .eleventy.cjs",
+    "check": "bun run scripts/check-site.mjs",
     "serve": "eleventy --serve --config .eleventy.cjs"
   },
   "module": "index.ts",
