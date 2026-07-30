@@ -70,6 +70,8 @@ async function fetchSpotifyArtwork(url) {
 }
 
 const YT_CHANNEL = "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ";
+const VOID_SERIES_URL = "https://void.alwaysyesterday.party/";
+const voidSeries = title => /^void(?: \d+)?$/i.test(title) ? { void_series: VOID_SERIES_URL } : {};
 
 // Try to scrape BC dates for BC-only items
 async function fetchBcDate(url) {
@@ -102,6 +104,7 @@ for (const bc of bcItems) {
     apple_music: amInfo ? amInfo.url : null,
     spotify: spByTitle[n] || null,
     youtube_music: YT_CHANNEL,
+    ...voidSeries(bc.title),
   });
 }
 
@@ -118,6 +121,7 @@ for (const [amTitle, info] of Object.entries(amItems)) {
     apple_music: info.url,
     spotify: spByTitle[n] || null,
     youtube_music: YT_CHANNEL,
+    ...voidSeries(stripped),
   });
 }
 

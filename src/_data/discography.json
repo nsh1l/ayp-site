@@ -7,7 +7,8 @@
       "bandcamp": null,
       "apple_music": "https://music.apple.com/jp/album/void-3-ep/6792388958",
       "spotify": null,
-      "youtube_music": "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ"
+      "youtube_music": "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ",
+      "void_series": "https://void.alwaysyesterday.party/"
     },
     {
       "title": "5 Hours 10 minutes",
@@ -21,11 +22,12 @@
     {
       "title": "void 2",
       "date": "2025-11-03",
-      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02cff7e04b945cf1f862ba478a",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02cff7e04b945cf1f862ba478a",
       "bandcamp": null,
       "apple_music": "https://music.apple.com/jp/album/void-2-ep/1847937742",
       "spotify": "https://open.spotify.com/album/0WqlAQowMkyX23dBCvaSWY",
-      "youtube_music": "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ"
+      "youtube_music": "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ",
+      "void_series": "https://void.alwaysyesterday.party/"
     },
     {
       "title": "void",
@@ -34,7 +36,8 @@
       "bandcamp": "https://so1loh.bandcamp.com/album/void",
       "apple_music": "https://music.apple.com/jp/album/void-ep/1822812315",
       "spotify": "https://open.spotify.com/album/6y0399JO3WVy2XBVRu4VGP",
-      "youtube_music": "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ"
+      "youtube_music": "https://music.youtube.com/channel/UCWp-2236lvtwG-FjrSi9TOQ",
+      "void_series": "https://void.alwaysyesterday.party/"
     },
     {
       "title": "212",
@@ -102,7 +105,7 @@
     {
       "title": "September 14",
       "date": "2020-12-22",
-      "image": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02caa6c97a02b0e563a158010f",
+      "image": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02caa6c97a02b0e563a158010f",
       "bandcamp": null,
       "apple_music": "https://music.apple.com/jp/album/september-14-single/1592093253",
       "spotify": "https://open.spotify.com/album/6tUuUqE3vGFZXf6Nh4tZwP",
