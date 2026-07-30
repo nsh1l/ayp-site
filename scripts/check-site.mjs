@@ -24,6 +24,10 @@ for (const href of requiredLinks) {
   if (!index.includes(`href=\"${href}\"`)) throw new Error(`missing homepage link: ${href}`);
 }
 
+// Verify loader video
+if (!index.includes('id="loading-logo"')) throw new Error("missing loader video");
+if (!index.includes('autoplay')) throw new Error("missing autoplay on loader video");
+
 const { releases } = await Bun.file("src/_data/discography.json").json();
 const releasePages = releases.filter(release => release.release_page).map(release => release.release_page);
 if (JSON.stringify(releasePages) !== JSON.stringify(["/releases/void-3/", "/releases/void-2/", "/releases/void/"])) {
