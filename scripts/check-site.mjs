@@ -14,6 +14,7 @@ for (const page of requiredPages) {
 const index = await Bun.file("dist/index.html").text();
 const requiredLinks = [
   "https://alwaysyesterdayparty.stores.jp/",
+  "https://trackid.alwaysyesterday.party/",
   "/artists/so1loh/",
   "/press/",
   "/releases/void/",
