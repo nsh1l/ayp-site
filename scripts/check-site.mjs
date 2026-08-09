@@ -44,6 +44,7 @@ if (!index.includes('property="og:image"')) throw new Error("missing og:image me
 if (!index.includes('property="og:title"')) throw new Error("missing og:title meta");
 if (!index.includes('name="twitter:card"')) throw new Error("missing twitter:card meta");
 if (!index.includes('rel="icon"')) throw new Error("missing favicon link");
+if (!index.includes('rel="apple-touch-icon"')) throw new Error("missing Safari home screen icon link");
 
 // Bandcamp button has text label (check in green CTA context, not just aria-label on icons)
 const bcBtn = index.match(/bg-green-600[\s\S]*?<\/a>/);
