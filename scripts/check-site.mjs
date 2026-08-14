@@ -25,6 +25,26 @@ for (const href of requiredLinks) {
   if (!index.includes(`href=\"${href}\"`)) throw new Error(`missing homepage link: ${href}`);
 }
 
+const sitemap = await Bun.file("dist/sitemap.xml").text();
+const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]);
+if (!sitemap.startsWith('<?xml version="1.0" encoding="UTF-8"?>')) throw new Error("sitemap is not XML");
+if (sitemapUrls.some(url => url.endsWith("/sitemap.xml"))) throw new Error("sitemap lists itself");
+for (const url of [
+  "https://alwaysyesterday.party/",
+  "https://alwaysyesterday.party/artists/so1loh/",
+  "https://alwaysyesterday.party/press/",
+  "https://alwaysyesterday.party/releases/void/",
+  "https://alwaysyesterday.party/releases/void-2/",
+  "https://alwaysyesterday.party/releases/void-3/",
+]) {
+  if (!sitemapUrls.includes(url)) throw new Error(`missing sitemap URL: ${url}`);
+}
+
+const robots = await Bun.file("dist/robots.txt").text();
+if (!robots.includes("Sitemap: https://alwaysyesterday.party/sitemap.xml")) {
+  throw new Error("robots.txt does not reference sitemap.xml");
+}
+
 // Verify loader video — ponytail: preload=metadata saves 800KB on repeat visits
 if (!index.includes('id="loading-logo"')) throw new Error("missing loader video");
 if (!index.includes('autoplay')) throw new Error("missing autoplay on loader video");

@@ -1,6 +1,7 @@
 {
   "title": "Always Yesterday Party",
   "description": "Always Yesterday Party（AYP）公式サイト。",
+  "url": "https://alwaysyesterday.party",
   "nav": [
     { "label": "Home", "url": "/" }
   ]
