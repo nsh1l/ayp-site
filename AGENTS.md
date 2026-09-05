@@ -32,5 +32,3 @@ bun run dev
 ## コードスタイル
 - Prettier 使用
 - インデント：スペース 2 個
-
-IMPORTANT: Do not write overly defensive code. Always prefer simplicity over pathological complexity.
