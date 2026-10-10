@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Parcel Tracking">
+  <rect width="512" height="512" rx="112" fill="#0D3B46"/>
+  <path d="M93 151 256 79l163 72v204l-163 78-163-78Z" fill="#EAF8F2"/>
+  <path d="m93 151 163 76 163-76M256 227v206" fill="none" stroke="#0D3B46" stroke-width="16" stroke-linejoin="round"/>
+  <path d="m177 114 163 75v67l-37-15v-34l-163-75" fill="#65D6B4"/>
+  <path d="m93 151 163 76v206L93 355Z" fill="#B7EADA"/>
+  <path d="m93 151 163 76 163-76M256 227v206" fill="none" stroke="#0D3B46" stroke-width="16" stroke-linejoin="round"/>
+  <path d="M127 326c15-18 32-17 46-1 14 16 31 17 47-1" fill="none" stroke="#0D3B46" stroke-width="13" stroke-linecap="round" stroke-dasharray="3 23"/>
+  <circle cx="174" cy="325" r="17" fill="#FFAD5C" stroke="#0D3B46" stroke-width="9"/>
+  <circle cx="368" cy="323" r="25" fill="#FFAD5C" stroke="#0D3B46" stroke-width="12"/>
+</svg>
