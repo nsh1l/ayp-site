@@ -59,6 +59,10 @@ for (const [t, id] of Object.entries(SPOTIFY_MAP)) {
   spByTitle[t.toLowerCase()] = `https://open.spotify.com/album/${id}`;
 }
 
+const ARTWORK_OVERRIDES = {
+  "void 3": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02ca916710bc17f17364bff119",
+};
+
 async function fetchSpotifyArtwork(url) {
   if (!url) return null;
   try {
@@ -118,7 +122,7 @@ for (const [amTitle, info] of Object.entries(amItems)) {
   releases.push({
     title: stripped,
     date: info.releaseDate || null,
-    image: await fetchSpotifyArtwork(spByTitle[n]),
+    image: ARTWORK_OVERRIDES[n] || await fetchSpotifyArtwork(spByTitle[n]),
     bandcamp: null,
     apple_music: info.url,
     spotify: spByTitle[n] || null,
