@@ -5,7 +5,7 @@
   "description": "Always Yesterday Party corporate static site",
   "scripts": {
     "fetch": "bun run scripts/fetch-bandcamp.mjs",
-    "build": "bun run fetch && eleventy --config .eleventy.cjs",
+    "build": "eleventy --config .eleventy.cjs && bun run check",
     "check": "bun run scripts/check-site.mjs",
     "serve": "eleventy --serve --config .eleventy.cjs"
   },

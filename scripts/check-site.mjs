@@ -79,4 +79,22 @@ if (JSON.stringify(releasePages) !== JSON.stringify(["/releases/void-3/", "/rele
   throw new Error(`unexpected release pages: ${JSON.stringify(releasePages)}`);
 }
 
-console.log(`✓ verified ${requiredPages.length} pages and ${releasePages.length} release detail links`);
+// Deploy must be self-contained: a transient upstream/CDN response cannot replace artwork or JS.
+for (const page of requiredPages) {
+  const html = await Bun.file(page).text();
+  for (const [, tag, src] of html.matchAll(/<(img|script)\b[^>]*\bsrc="([^"]+)"/g)) {
+    if (!src.startsWith("/assets/")) throw new Error(`external or invalid ${tag} on ${page}: ${src}`);
+    const asset = Bun.file(`dist${src}`);
+    if (!(await asset.exists()) || asset.size < 100) throw new Error(`missing/empty asset on ${page}: ${src}`);
+    if (tag === "img") {
+      const bytes = new Uint8Array(await asset.arrayBuffer());
+      const jpeg = bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff;
+      const png = bytes[0] === 0x89 && bytes[1] === 0x50 && bytes[2] === 0x4e && bytes[3] === 0x47;
+      if (!jpeg && !png) throw new Error(`invalid image on ${page}: ${src}`);
+    }
+  }
+}
+if (!releases.find(release => release.title === "void 3")?.image?.startsWith("/assets/artwork/")) {
+  throw new Error("void 3 artwork must be bundled locally");
+}
+console.log(`✓ verified ${requiredPages.length} pages, ${releasePages.length} release detail links, and bundled media`);
