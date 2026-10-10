@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="AYP TrackID">
-  <rect width="512" height="512" rx="112" fill="#201735"/>
-  <circle cx="256" cy="256" r="155" fill="none" stroke="#675087" stroke-width="8"/>
-  <circle cx="256" cy="256" r="114" fill="none" stroke="#675087" stroke-width="8"/>
-  <path d="M98 280h45l22-54 31 99 33-171 31 187 29-91 23 30h102" fill="none" stroke="#F6DA82" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="256" cy="256" r="19" fill="#FF736B" stroke="#201735" stroke-width="9"/>
-  <path d="M365 106v74m-37-37h74" stroke="#FF736B" stroke-width="15" stroke-linecap="round"/>
-</svg>
