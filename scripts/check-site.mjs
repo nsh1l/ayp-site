@@ -25,6 +25,10 @@ const requiredLinks = [
 for (const href of requiredLinks) {
   if (!index.includes(`href=\"${href}\"`)) throw new Error(`missing homepage link: ${href}`);
 }
+const trackIdCard = index.split("AYP TrackID</h3>")[1]?.split("</article>")[0];
+if (!trackIdCard?.includes("画像は解析のためCloudflare Workersへ送信され") || !trackIdCard.includes("Workers AI") || trackIdCard.includes("Tesseract.js")) {
+  throw new Error("TrackID card must describe server-side Workers AI OCR");
+}
 
 const sitemap = await Bun.file("dist/sitemap.xml").text();
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]);
