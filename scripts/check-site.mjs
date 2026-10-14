@@ -15,7 +15,7 @@ const index = await Bun.file("dist/index.html").text();
 const requiredLinks = [
   "https://alwaysyesterdayparty.stores.jp/",
   "https://trackid.alwaysyesterday.party/",
-  "https://sonora-viz.pages.dev/",
+  "https://sonora.alwaysyesterday.party/",
   "/artists/so1loh/",
   "/press/",
   "/releases/void/",
