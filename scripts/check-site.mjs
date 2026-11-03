@@ -25,6 +25,15 @@ const requiredLinks = [
 for (const href of requiredLinks) {
   if (!index.includes(`href=\"${href}\"`)) throw new Error(`missing homepage link: ${href}`);
 }
+const websites = index.split('<section id="websites"')[1]?.split('</section>')[0];
+for (const [title, href, image] of [
+  ['新田菓子舗', 'https://nitta-kashiho.com/', '/assets/websites/nitta.jpg'],
+  ['サンタくん', 'https://sasasanta.one/', '/assets/websites/santa.jpg'],
+  ['void series', 'https://void.alwaysyesterday.party/', '/assets/websites/void.jpg'],
+]) {
+  if (!websites?.includes(title) || !websites.includes(`href="${href}"`) || !websites.includes(`src="${image}"`)) throw new Error(`missing website entry: ${title}`);
+}
+
 const trackIdCard = index.split("AYP TrackID</h3>")[1]?.split("</article>")[0];
 if (!trackIdCard?.includes("画像は解析のためCloudflare Workersへ送信され") || !trackIdCard.includes("Workers AI") || trackIdCard.includes("Tesseract.js")) {
   throw new Error("TrackID card must describe server-side Workers AI OCR");
