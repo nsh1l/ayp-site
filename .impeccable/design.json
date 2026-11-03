@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-24T06:28:21+09:00",
+  "title": "Design System: Always Yesterday Party",
+  "extensions": {
+    "colorMeta": {
+      "primary-navy": {
+        "role": "primary",
+        "displayName": "Deep AYP Navy",
+        "canonical": "#0B1F3A",
+        "tonalRamp": ["#0C2240", "#153C6F", "#1F57A3", "#2973D6", "#5C94E0", "#90B6EA", "#C3D8F4", "#EAF1FB"]
+      },
+      "primary-ink": {
+        "role": "primary",
+        "displayName": "AYP Ink",
+        "canonical": "#0F172A",
+        "tonalRamp": ["#141F38", "#233662", "#334E8F", "#4367BC", "#708BCC", "#9DB0DC", "#CAD4EC", "#ECF0F8"]
+      },
+      "signal-orange": {
+        "role": "tertiary",
+        "displayName": "Signal Orange",
+        "canonical": "#F97316",
+        "tonalRamp": ["#4B2002", "#813703", "#BD5005", "#F96A06", "#FA8D42", "#FCB17E", "#FDD5B9", "#FEF0E6"]
+      },
+      "sea-mid": {
+        "role": "secondary",
+        "displayName": "Inner Sea Mid",
+        "canonical": "#1B4F72",
+        "tonalRamp": ["#0F2B3E", "#194A6B", "#256D9D", "#318FCE", "#62AADA", "#94C5E6", "#C5E0F1", "#EAF4FA"]
+      },
+      "sea-deep": {
+        "role": "secondary",
+        "displayName": "Inner Sea Deep",
+        "canonical": "#072742",
+        "tonalRamp": ["#072945", "#0D4778", "#1368AF", "#1888E7", "#50A5EC", "#87C1F2", "#BEDEF8", "#E8F3FD"]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface White",
+        "canonical": "#FFFFFF",
+        "tonalRamp": ["#262626", "#424242", "#616161", "#808080", "#9E9E9E", "#BDBDBD", "#DBDBDB", "#F2F2F2"]
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Quiet Canvas",
+        "canonical": "#F8FAFC",
+        "tonalRamp": ["#172636", "#28425D", "#3A6188", "#4C7FB3", "#779EC5", "#A2BDD7", "#CDDBEA", "#EDF2F7"]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Quiet Border",
+        "canonical": "#E2E8F0",
+        "tonalRamp": ["#1A2532", "#2D3F57", "#425C80", "#577AA8", "#7F9ABD", "#A8BAD2", "#D0DAE7", "#EEF2F6"]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Copy",
+        "canonical": "#6B7280",
+        "tonalRamp": ["#23252A", "#3C4048", "#585E6A", "#747C8B", "#959BA7", "#B7BBC3", "#D8DADE", "#F1F2F3"]
+      },
+      "success": {
+        "role": "semantic",
+        "displayName": "Success Green",
+        "canonical": "#15803D",
+        "tonalRamp": ["#0B421F", "#137236", "#1BA64F", "#24DB68", "#59E48D", "#8DECB1", "#C2F5D5", "#E9FBF0"]
+      }
+    },
+    "typographyMeta": {
+      "display-lg": { "displayName": "Display Large", "purpose": "Brand-site hero at large viewports only." },
+      "display-sm": { "displayName": "Display Small", "purpose": "Brand-site hero at compact viewports." },
+      "headline": { "displayName": "Headline", "purpose": "Major brand-site section headings." },
+      "title": { "displayName": "Title", "purpose": "App titles, card titles, and result headings." },
+      "body": { "displayName": "Body", "purpose": "Primary copy and input text." },
+      "body-sm": { "displayName": "Body Small", "purpose": "Supporting copy, metadata, and button labels." },
+      "label": { "displayName": "Short Label", "purpose": "Brief categories and kinds, never repeated above every section." }
+    },
+    "shadows": [
+      {
+        "name": "marketing-soft",
+        "value": "0 10px 30px rgba(2, 6, 23, 0.10)",
+        "purpose": "Brand imagery or one-off marketing surfaces only; never pair decoratively with a border."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state-fast",
+        "value": "160ms ease-out",
+        "purpose": "Product hover, focus, selection, and disclosure state changes."
+      },
+      {
+        "name": "brand-reveal",
+        "value": "700ms cubic-bezier(0.33, 1, 0.68, 1)",
+        "purpose": "Brand-site section reveals; content remains visible without animation."
+      },
+      {
+        "name": "inner-sea-drift",
+        "value": "5200ms ease-in-out alternate infinite",
+        "purpose": "Ambient brand background only; disabled for reduced motion and never used in task surfaces."
+      }
+    ],
+    "breakpoints": [
+      { "name": "app-compact", "value": "480px" },
+      { "name": "site-sm", "value": "640px" },
+      { "name": "site-md", "value": "768px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "AYP App Header",
+      "kind": "nav",
+      "refersTo": "app-header",
+      "description": "A compact brand edge for task-focused apps, using text and the signal dot without inventing a logo.",
+      "html": "<header class=\"ds-app-header\"><span class=\"ds-app-header__dot\" aria-hidden=\"true\"></span><span><strong>AYP</strong><small>Application name</small></span></header>",
+      "css": ".ds-app-header{display:flex;align-items:center;gap:12px;padding:16px 24px;border-radius:16px;background:#0B1F3A;color:#fff;font-family:ui-sans-serif,system-ui,sans-serif}.ds-app-header__dot{width:8px;height:8px;border-radius:50%;background:#F97316;flex:none}.ds-app-header strong,.ds-app-header small{display:block}.ds-app-header strong{font-size:20px;line-height:1.4}.ds-app-header small{margin-top:2px;color:#E2E8F0;font-size:12px;line-height:1.4}"
+    },
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single primary task action on an app screen.",
+      "html": "<button class=\"ds-btn-primary\">続ける</button>",
+      "css": ".ds-btn-primary{min-height:44px;padding:12px 24px;border:0;border-radius:9999px;background:#0B1F3A;color:#fff;font:600 14px/1.4 ui-sans-serif,system-ui,sans-serif;cursor:pointer;transition:background-color 160ms ease-out,color 160ms ease-out,transform 160ms ease-out}.ds-btn-primary:hover{background:#F97316;color:#0B1F3A;transform:translateY(-1px)}.ds-btn-primary:active{transform:none}.ds-btn-primary:focus-visible{outline:3px solid #F97316;outline-offset:2px}.ds-btn-primary:disabled{background:#E2E8F0;color:#6B7280;cursor:not-allowed;transform:none}"
+    },
+    {
+      "name": "Signal Button",
+      "kind": "button",
+      "refersTo": "button-signal",
+      "description": "A rare, high-signal action using accessible navy text on orange.",
+      "html": "<button class=\"ds-btn-signal\">公開する</button>",
+      "css": ".ds-btn-signal{min-height:44px;padding:12px 24px;border:0;border-radius:9999px;background:#F97316;color:#0B1F3A;font:600 14px/1.4 ui-sans-serif,system-ui,sans-serif;cursor:pointer;transition:filter 160ms ease-out,transform 160ms ease-out}.ds-btn-signal:hover{filter:brightness(.94);transform:translateY(-1px)}.ds-btn-signal:active{transform:none}.ds-btn-signal:focus-visible{outline:3px solid #0B1F3A;outline-offset:2px}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "A bordered alternative action that stays quieter than the primary action.",
+      "html": "<button class=\"ds-btn-secondary\">戻る</button>",
+      "css": ".ds-btn-secondary{min-height:44px;padding:12px 24px;border:1px solid #E2E8F0;border-radius:9999px;background:#fff;color:#0B1F3A;font:600 14px/1.4 ui-sans-serif,system-ui,sans-serif;cursor:pointer;transition:border-color 160ms ease-out,color 160ms ease-out}.ds-btn-secondary:hover{border-color:#F97316;color:#C2410C}.ds-btn-secondary:focus-visible{outline:3px solid #F97316;outline-offset:2px}"
+    },
+    {
+      "name": "Task Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "A flat, bordered work surface; it never nests another card.",
+      "html": "<section class=\"ds-card\"><h3>作業タイトル</h3><p>必要な説明を短く置きます。</p></section>",
+      "css": ".ds-card{padding:24px;border:1px solid #E2E8F0;border-radius:16px;background:#fff;color:#0F172A;font-family:ui-sans-serif,system-ui,sans-serif}.ds-card h3{margin:0;font-size:20px;line-height:1.4}.ds-card p{max-width:70ch;margin:8px 0 0;color:#6B7280;font-size:14px;line-height:1.6}"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "The default readable input with the AYP signal-orange focus treatment.",
+      "html": "<label class=\"ds-field\"><span>ラベル</span><input placeholder=\"入力してください\"></label>",
+      "css": ".ds-field{display:grid;gap:8px;color:#0F172A;font-family:ui-sans-serif,system-ui,sans-serif}.ds-field span{font-size:12px;font-weight:600}.ds-field input{min-height:44px;padding:12px 16px;border:1px solid #E2E8F0;border-radius:8px;background:#fff;color:#0F172A;font:400 16px/1.5 inherit}.ds-field input::placeholder{color:#6B7280;opacity:1}.ds-field input:focus{border-color:#F97316;outline:3px solid rgba(249,115,22,.25);outline-offset:1px}"
+    },
+    {
+      "name": "Selection Chip",
+      "kind": "chip",
+      "refersTo": "chip-selected",
+      "description": "A compact choice that moves from a white border to the selected navy fill.",
+      "html": "<button class=\"ds-chip\" aria-pressed=\"true\">選択中</button>",
+      "css": ".ds-chip{min-height:36px;padding:8px 12px;border:1px solid #E2E8F0;border-radius:9999px;background:#fff;color:#0B1F3A;font:600 14px/1.4 ui-sans-serif,system-ui,sans-serif;cursor:pointer}.ds-chip[aria-pressed=\"true\"]{border-color:#0B1F3A;background:#0B1F3A;color:#fff}.ds-chip:hover{border-color:#F97316}.ds-chip:focus-visible{outline:3px solid #F97316;outline-offset:2px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Inner Sea Signal",
+    "overview": "AYPの画面は、瀬戸内の内海のように静かで深いネイビーの場に、必要な瞬間だけオレンジの信号が灯るものとする。音楽レーベルの余韻と、現場で本当に使う道具の明快さを同居させる。装飾で「クリエイティブらしさ」を演じず、強い配色、余白、実物の作品や機能でAYPらしさを出す。\n\nブランドサイトでは内海のグラデーション、波、リップル、作品画像を大きく使ってよい。アプリでは同じモチーフをヘッダー、フォーカス、選択状態などの狭い面積に抑え、作業面は白と淡いキャンバスに戻す。音楽アプリのレコード、配送アプリの荷物、印刷アプリのプリンターなど、機能固有の手掛かりは残す。\n\n既存ロゴは白地に黒一色の、太い手描き線とピクセル状の「AYP」を組み合わせた正方形アートである。画像そのものを使い、描き直し、彩色、簡略化、別書体による代替ロゴは行わない。ロゴが置けない環境では「Always Yesterday Party」または「AYP」の文字と小さなオレンジの点だけで表す。",
+    "keyCharacteristics": [
+      "深いネイビーの土台と、希少なオレンジの信号",
+      "白い作業面、明確な境界、読みやすいシステムサンセリフ",
+      "角丸カードと完全なピルを役割で使い分ける形状語彙",
+      "ブランド面は大胆、プロダクト面は静かで操作優先",
+      "黒白の既存ロゴと、各アプリ固有の機能記号を両立"
+    ],
+    "rules": [
+      { "name": "The Signal Light Rule", "body": "オレンジは一画面の10%以下に抑える。常時広く塗るのではなく、次に見る場所を示す。", "section": "colors" },
+      { "name": "The Two-Contrast Rule", "body": "白文字はネイビーに、オレンジ面の文字はネイビーに置く。白文字をSignal Orangeへ直接置く組み合わせは2.80:1しかないため禁止する。", "section": "colors" },
+      { "name": "The Platform Color Rule", "body": "Spotify、YouTube、配送区分、エラー等の外部／意味色は、その意味を失わない範囲で保持する。AYPオレンジへ一律置換しない。", "section": "colors" },
+      { "name": "The One Family Rule", "body": "1画面では同じシステムサンセリフ系を使い、表示書体で操作UIを飾らない。", "section": "typography" },
+      { "name": "The Weight Carries Voice Rule", "body": "AYPの見出しは700、本文は400、操作ラベルは600を基本とする。字間を詰め過ぎず、表示見出しでも `-0.025em` より狭くしない。", "section": "typography" },
+      { "name": "The One Workstream Rule", "body": "プロダクト画面は主タスクを一列に通す。カードを増やして工程を分断しない。", "section": "layout" },
+      { "name": "The Brand-at-the-Edge Rule", "body": "アプリの内海モチーフはヘッダー、ページ外周、選択状態に置き、入力・結果・データの背後へ敷かない。", "section": "layout" },
+      { "name": "The One Depth Cue Rule", "body": "同じ要素に広い影と1px境界を装飾として併用しない。アプリは境界、浮かせるブランド面は影のどちらか一方を選ぶ。", "section": "elevation" },
+      { "name": "The Flat Until Needed Rule", "body": "ドロップ中、ホバー、フォーカス、モーダルなど状態が変わる瞬間だけ奥行きを増やす。常時浮遊するガラス面は作らない。", "section": "elevation" },
+      { "name": "The Role Before Radius Rule", "body": "丸さは役割を示す。コンテナは穏やかな角丸、操作はピル、入力は小さな角丸。カードを24–40pxへ過剰に丸めない。", "section": "shapes" },
+      { "name": "The Untouched Logo Rule", "body": "ロゴ画像の外形だけを12pxで整え、中の黒い線画へ色、影、マスク、アニメーションを加えない。", "section": "shapes" }
+    ],
+    "dos": [
+      "Do Deep AYP Navy、Signal Orange、白い作業面の三役を一貫して使う。",
+      "Do オレンジ面にはネイビー文字、ネイビー面には白文字を置く。",
+      "Do 既存の黒白ロゴ画像を改変せず、正方形のまま使う。",
+      "Do 各アプリ固有の機能記号と標準プラットフォーム操作を残す。",
+      "Do 44px以上の操作領域、明示的なフォーカス、Reduced Motion、意味のある空状態を維持する。",
+      "Do 新しい画面を作る前に既存トークン、CSS変数、ThemeResourceを探して再利用する。"
+    ],
+    "donts": [
+      "Don't Signal Orangeへ白い通常サイズ文字を置く。コントラスト不足になる。",
+      "Don't 紫／ピンクのネオングラデーション、グラデーション文字、装飾的グラスモーフィズムをAYPアプリに使う。",
+      "Don't ベージュ／グレージュをAYPの共通キャンバスとして使う。ブランドの内海と信号灯が消える。",
+      "Don't 既存ロゴを描き直す、着色する、丸く切り抜く、別書体の「AYP」で置き換える。",
+      "Don't 1px境界と16px以上の広い影を同じカードに重ねる。",
+      "Don't 24px以上のカード角丸、入れ子カード、全セクションの小さな全大文字キッカーを反射的に使う。",
+      "Don't 成功、エラー、配送区分、外部サービスの意味色をすべてオレンジへ置換する。",
+      "Don't スタイルのためだけに新しい依存関係、抽象コンポーネント、共有パッケージを追加する。"
+    ]
+  }
+}
